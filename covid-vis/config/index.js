@@ -10,7 +10,17 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+
+      '/api': {
+        target: 'https://interface.sina.cn/news/wap/fymap2020_data.d.json',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
