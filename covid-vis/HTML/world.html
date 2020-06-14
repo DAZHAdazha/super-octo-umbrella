@@ -9,15 +9,17 @@
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width: 1000px;height:800px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
  
         var data = [{
+            // 各个时间点数据
     "time": 0,
     "data": [{
         "name": "China",
+        // 感染数量，占比，国家
         "value": [548, 98.73873873873873, "China"]
     }, {
         "name": "Japan",
@@ -1430,12 +1432,12 @@ var option = {
             label: {
                 normal: {
                     textStyle: {
-                        color: '#ddd'
+                        color: '#555'
                     }
                 },
                 emphasis: {
                     textStyle: {
-                        color: '#fff'
+                        color: '#555'
                     }
                 }
             },
@@ -1444,7 +1446,7 @@ var option = {
                 color: '#555'
             },
             checkpointStyle: {
-                color: '#bbb',
+                color: '#555',
                 borderColor: '#777',
                 borderWidth: 1
             },
@@ -1464,7 +1466,7 @@ var option = {
                 return ele.time
             })
         },
-        backgroundColor: '#404a59',
+        backgroundColor: '#fff',
         title: {
             text: '新冠病毒全球确诊病例变化情况',
             subtext: '以一周为周期',
@@ -1472,7 +1474,7 @@ var option = {
             top: 'top',
             textStyle: {
                 fontSize: 25,
-                color: 'rgba(255,255,255, 0.9)'
+                color: '#555'
             }
         },
         tooltip: {
@@ -1499,14 +1501,14 @@ var option = {
                 left: 10,
                 itemStyle: {
                     normal: {
-                        areaColor: '#323c48',
+                        areaColor: 'white',
                         borderColor: '#404a59'
                     },
                     emphasis: {
                         label: {
                             show: true
                         },
-                        areaColor: 'rgba(255,255,255, 0.5)'
+                        areaColor: '#555'
                     }
                 },
                 data: []
@@ -1521,7 +1523,7 @@ var option = {
                         show: true,
                         position: 'right',
                         textStyle: {
-                            color: '#ddd'
+                            color: '#555'
                         }
                     }
                 },
@@ -1540,20 +1542,20 @@ var option = {
                 label: {
                     normal: {
                         textStyle: {
-                            color: '#ddd'
+                            color: '#555'
                         }
                     }
                 },
                 labelLine: {
                     normal: {
                         lineStyle: {
-                            color: '#ddd'
+                            color: '#555'
                         }
                     }
                 },
                 itemStyle: {
                     normal: {
-                        borderColor: 'rgba(0,0,0,0.3)',
+                        borderColor: '#555',
                         borderSize: 1
                     }
                 }
@@ -1582,10 +1584,10 @@ for (var i = 0; i < data.length; i++) {
             max: data[i].data[0].value[0],
             text: ['High', 'Low'],
             textStyle: {
-                color: '#ddd'
+                color: '#555'
             },
             inRange: {
-                color: ['lightskyblue', 'yellow', 'orangered', 'red']
+                color: ['#E9B090', '#E08150', '#BD430A', '#BB0000']
             }
         }],
         xAxis: {
@@ -1600,7 +1602,7 @@ for (var i = 0; i < data.length; i++) {
             axisLabel: {
                 show:false,
                 textStyle: {
-                    color: '#ddd'
+                    color: '#555'
                 }
             },
             data: data[i].data.map(function(ele) {
