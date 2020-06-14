@@ -253,7 +253,7 @@ export default {
       // 用于获取新浪API上的数据;
       axios.get('/api').then(response => {
         this.data = response.data
-        console.log('data received successfully')
+        console.log(response)
       })
     }
   },
