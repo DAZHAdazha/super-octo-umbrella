@@ -13,7 +13,10 @@
   "dependencies": {
     "axios": "^0.19.2",
     "echarts": "^4.8.0",
+<<<<<<< HEAD
     "json-server": "^0.16.1",
+=======
+>>>>>>> 3ffca30bb27ffb963430db94bf09d11289548dc0
     "vue": "^2.5.2",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"

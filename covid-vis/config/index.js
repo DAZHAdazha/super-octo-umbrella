@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-
+      // 对应的域名代理,通过这种方法来完成http跨域请求
       '/api': {
         target: 'https://interface.sina.cn/news/wap/fymap2020_data.d.json',
         changeOrigin: true,
