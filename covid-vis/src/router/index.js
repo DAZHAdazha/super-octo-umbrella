@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home'
-
+import main_page from '@/pages/main_page/main_page'
 Vue.use(Router)
 
 export default new Router({
@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/main',
+      name: 'main_page',
+      component:main_page
     }
   ]
 })
