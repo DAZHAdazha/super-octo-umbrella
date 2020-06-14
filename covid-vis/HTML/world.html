@@ -1420,7 +1420,7 @@ var option = {
         timeline: {
             axisType: 'category',
             orient: 'vertical',
-            autoPlay: true,
+            autoPlay: false,    // 自动播放
             inverse: true,
             playInterval: 1000,
             left: null,
@@ -1565,7 +1565,7 @@ var option = {
     options: []
 }
 
-for (var i = 0; i < data.length; i++) {
+for (var i = data.length-1; i >= 0; i--) {
     //计算其余国家确诊人数
     var restPercent = 100;
     var restValue = 0;

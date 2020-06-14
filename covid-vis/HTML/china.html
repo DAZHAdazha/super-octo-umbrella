@@ -106,7 +106,7 @@ var option = {
             axisType: 'category',
             // realtime: false,
             // loop: false,
-            autoPlay: true,
+            autoPlay: false,    // 自动播放
             playInterval: 2000,
             symbolSize: 12,
             left: '5%',
@@ -116,7 +116,7 @@ var option = {
             // controlStyle: {
             //     position: 'left'
             // },
-            data: days,
+            data: days.reverse(),
             tooltip: {
                 formatter: days
             },
@@ -265,7 +265,7 @@ var option = {
     animationEasingUpdate: 'quinticInOut',
     options: []
 };
-for (var n = 0; n < days.length; n++) {
+for (var n = days.length-1; n >= 0; n--) {
 
     var res = [];
     for (j = 0; j < data[n].length; j++) {
@@ -287,9 +287,9 @@ for (var n = 0; n < days.length; n++) {
         res1[t] = res[res.length - 1 - t].name;
         res2[t] = res[res.length - 1 - t].value;
     }
-    console.log(res1);
-    console.log("----------------");
-    console.log(province);
+    // console.log(res1);
+    // console.log("----------------");
+    // console.log(province);
     option.options.push({
         title: [{
                 text: days[n] + "日  " + news[n],
