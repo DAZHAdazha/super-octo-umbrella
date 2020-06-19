@@ -10,14 +10,15 @@
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 1000px;height:800px;"></div>
+    <div id='chart-panel'></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
-        //宅男数量
+        //人群数量
 var nodesnum = 360
-//中二病下毒机会
+//新冠肺炎传播源数量
 var xiadu = 1
-//中二病的传染性，接触就传染的概率
+//新冠肺炎的传染性，接触就传染的概率
 var infectivity = 0.2
 //治疗天数
 var cureday = 4
@@ -225,7 +226,7 @@ for (var i = 0; i < nodesnum; i++) {
 }
 
 
-//随机下毒一个人
+//随机一个传播源
 nodes[Math.floor(Math.random()*nodesnum)].category = 0
 
 //估计R0
@@ -267,10 +268,10 @@ var dies = [[1,0]]
 //echarts的基础设置
 option = {
     title: [{
-        text: '中二病患者数：0',
-        subtext: '你还有' + xiadu + '次下毒机会（点击目标下毒）'
+        text: '新冠肺炎患者数：0',
+        subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
     }, {
-        text: '说明:\n2020年的某一天\n未知疾病突然出现\n迅速在宅男之间传播\n这一传说中的疾病被命名为:中二病\n每个点表示一个宅男\n点之间的连线代表宅男之间二次元的灵魂交流\n\n参数：\n传染性：每天交流传染中二病的概率\n潜伏期天数：潜伏期内会传染，潜伏期结束后\n隔离治疗，并判断治愈还是死亡\n\n怎么玩:\n你可以前期疯狂传染，后期调整参数防控\n如何控制传播？\n1.减少人与人的接触（图的边密度减少）\n2.戴口罩降低传染性（有交流就传染的概率降低）\n3.早发现早隔离避免潜伏期内传播（潜伏期天数减少）\n\n实现群体免疫：\n在传播到后期大部分人都治愈时（有抗体）再下毒\n虽然传染性强但也传播不开了',
+        text: '说明:模拟肺炎传播\n每个点表示一个人群\n点之间的连线代表人群之间的联系\n\n参数：\n传染性：每天交流传染新冠肺炎的概率\n潜伏期天数：潜伏期内会传染，潜伏期结束后\n隔离治疗，并判断治愈还是死亡\n如何控制传播？\n1.减少人与人的接触（图的边密度减少）\n2.戴口罩降低传染性（有交流就传染的概率降低）\n3.早发现早隔离避免潜伏期内传播（潜伏期天数减少）\n\n实现群体免疫：\n在传播到后期大部分人都治愈时（有抗体）再使其成为传播源\n虽然传染性强但也传播不开了',
                 textStyle: {
             fontSize: 12
         },
@@ -310,7 +311,7 @@ option = {
               orient: 'vertical',
                         x: '0%',
                         y: '220px'},
-              {data: ['中二病总患者数', '中二病新增患者数','中二病治愈数','中二病死亡数'],
+              {data: ['新冠肺炎总患者数', '新冠肺炎新增患者数','新冠肺炎治愈数','新冠肺炎死亡数'],
    
                         x: '70%',
                         y: '0%'}
@@ -319,7 +320,7 @@ option = {
     
     series: [{
             type: 'graph',
-            name: '宅男',
+            name: '人群',
             layout: 'force',
             symbolSize: 12,
             roam: true,
@@ -360,7 +361,7 @@ option = {
         {
             xAxisIndex: 0,
             yAxisIndex: 0,
-            name: '中二病总患者数',
+            name: '新冠肺炎总患者数',
             type: 'line',
             showSymbol: false,
             data: viruscounts,
@@ -369,7 +370,7 @@ option = {
         {
             xAxisIndex: 0,
             yAxisIndex: 0,
-            name: '中二病新增患者数',
+            name: '新冠肺炎新增患者数',
             type: 'line',
             showSymbol: false,
             data: viruscounts,
@@ -378,7 +379,7 @@ option = {
         {
             xAxisIndex: 0,
             yAxisIndex: 0,
-            name: '中二病治愈数',
+            name: '新冠肺炎治愈数',
             type: 'line',
             showSymbol: false,
             data: viruscounts,
@@ -387,7 +388,7 @@ option = {
         {
             xAxisIndex: 0,
             yAxisIndex: 0,
-            name: '中二病死亡数',
+            name: '新冠肺炎死亡数',
             type: 'line',
             showSymbol: false,
             data: viruscounts,
@@ -475,8 +476,8 @@ $(".chuan").click(function() {
     
     optionchange = {
         title: [{
-            text: '中二病患者数：' + virusitem.length,
-            subtext: '你还有' + xiadu + '次下毒机会（点击目标下毒）'
+            text: '新冠肺炎患者数：' + virusitem.length,
+            subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
         }],
         xAxis: [{
             max: 2 + t
@@ -546,8 +547,8 @@ myChart.on('click', function(p) {
         }
         optionchange = {
             title: [{
-                text: '中二病患者数：' + virusitem.length,
-                subtext: '你还有' + xiadu + '次下毒机会（点击目标下毒）'
+                text: '新冠肺炎患者数：' + virusitem.length,
+                subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
             }],
             xAxis: [{
                 max: 2 + t
