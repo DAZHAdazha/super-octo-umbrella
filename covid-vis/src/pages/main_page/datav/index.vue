@@ -5,7 +5,7 @@
       <top-header />
 
       <div class="main-content">
-        <!-- <digital-flop /> -->
+        <digital-flop />
 
         <div class="block-left-right-content">
           <ranking-board />
@@ -14,12 +14,12 @@
             <div class="block-top-content">
               <rose-chart />
 
-              <!-- <water-level-chart /> -->
+              <water-level-chart />
 
               <scroll-board />
             </div>
 
-            <!-- <cards /> -->
+            <cards />
           </div>
         </div>
       </div>
@@ -28,24 +28,24 @@
 </template>
 
 <script>
-import topHeader from './datav/topHeader'
-import digitalFlop from './datav/digitalFlop'
-import rankingBoard from './datav/rankingBoard'
-import roseChart from './datav/roseChart'
-import waterLevelChart from './datav/waterLevelChart'
-import scrollBoard from './datav/scrollBoard'
-import cards from './datav/cards'
+import topHeader from './topHeader'
+import digitalFlop from './digitalFlop'
+import rankingBoard from './rankingBoard'
+import roseChart from './roseChart'
+import waterLevelChart from './waterLevelChart'
+import scrollBoard from './scrollBoard'
+import cards from './cards'
 
 export default {
-  name: 'main_page',
+  name: 'DataView',
   components: {
     topHeader,
-    // digitalFlop,
+    digitalFlop,
     rankingBoard,
     roseChart,
-    // waterLevelChart,
+    waterLevelChart,
     scrollBoard,
-    // cards
+    cards
   },
   data () {
     return {}
@@ -62,7 +62,7 @@ export default {
   color: #fff;
 
   #dv-full-screen-container {
-    background-image: url('./datav/img/bg.png');
+    background-image: url('./img/bg.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
     display: flex;
