@@ -9,6 +9,7 @@ from sqlalchemy import or_
 import csv
 
 excelFile = r'D:\肺炎\DXY-COVID-19-Data\csv\DXYRumors.csv' # 修改为存放班级的excel位置
+csvFile = r'D:\肺炎\DXY-COVID-19-Data\csv\DXYNews.csv' # 修改为存放班级的excel位置
 
 
 
@@ -40,6 +41,20 @@ def read_xlrd(excelFile,title,body,summary,time):
     time.pop(0)
 
 
+def read_csv(csvFile,title,source,summary,time):
+  with open(csvFile,'r', encoding='UTF-8') as f:
+    reader = csv.reader(f)
+    for row in reader:
+      time.append(row[2])
+      title.append(row[3])
+      summary.append(row[4])
+      source.append(row[5])
+    title.pop(0)
+    summary.pop(0)
+    source.pop(0)
+    time.pop(0)
+
+
 class Rumors(db.Model):
   # 定义表名
   __tablename__ = 'rumors'
@@ -55,6 +70,22 @@ class Rumors(db.Model):
   # repr()方法显示一个可读字符串
   def __repr__(self):
     return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.body, self.time)
+
+class News(db.Model):
+  # 定义表名
+  __tablename__ = 'news'
+  # 定义字段
+  # db.Column表示是一个字段
+  id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # id为主键
+  title = db.Column(Text)
+  summary = db.Column(Text)
+  source = db.Column(Text)
+  time = db.Column(Text)
+  # 对于一对多模型，在一的一的一方
+  # backref='role'表示User要用的属性
+  # repr()方法显示一个可读字符串
+  def __repr__(self):
+    return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.source, self.time)
 
 
 
@@ -98,6 +129,16 @@ def get_rumor_id(): #此次参数是为了方便后面return中再次使用
       rumor = Rumors.query.filter(or_(Rumors.title.contains(q), Rumors.body.contains(q), Rumors.summary.contains(q), Rumors.time.contains(q)))
       print(rumor.all())
       return 'yes'
+    return render_template('index.html')\
+
+@app.route('/news',methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
+def get_news_id(): #此次参数是为了方便后面return中再次使用
+    if request.method == 'POST':
+      q = request.get_json()['title']
+      print(q)
+      news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q), News.time.contains(q)))
+      print(news.all())
+      return 'yes'
     return render_template('index.html')
 
 # 4.启动程序
@@ -115,6 +156,17 @@ if __name__ == '__main__':
     # print(body)
     # print(summary)
     # print(time)
+    # source = []
+    # time = []
+    # title = []
+    # summary = []
+    # read_csv(csvFile, title, source,summary, time)
+    #
+    # for i in range(len(title)):
+    #   item = News(title=title[i],summary=summary[i],source=source[i],time=time[i])
+    #   db.session.add(item)
+    # db.session.commit()
+
     #
     # for i in range(len(title)):
     #   item = Rumors(title=title[i],summary=summary[i],body=body[i],time=time[i])
