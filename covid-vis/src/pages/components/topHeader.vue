@@ -52,7 +52,7 @@ export default {
       axios
         .get("/api")
         .then(res => {
-          console.log(res);
+          // console.log(res);
           var response = res.data.data;
           this.comming = true;
           this.domesticnumber = response.gntotal;

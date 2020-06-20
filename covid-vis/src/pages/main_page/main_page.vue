@@ -51,9 +51,14 @@ export default {
     // cards
   },
   data () {
-    return {}
+    return {
+    }
   },
-  methods: {}
+  methods: {
+  },
+  mounted () {
+    this.getData()
+  }
 }
 </script>
 
