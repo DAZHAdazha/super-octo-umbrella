@@ -12,7 +12,7 @@
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
-              <rose-chart />
+              <rose-chart/>
 
               <!-- <water-level-chart /> -->
 
@@ -48,9 +48,14 @@ export default {
     // cards
   },
   data () {
-    return {}
+    return {
+    }
   },
-  methods: {}
+  methods: {
+  },
+  mounted () {
+    this.getData()
+  }
 }
 </script>
 
