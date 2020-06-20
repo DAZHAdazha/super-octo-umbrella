@@ -58,7 +58,7 @@ export default {
     padding-top: 10px;
     padding-left: 50px;
     height: 50px;
-    width: 100px;
+    width: 150px;
     // display: flex;
     align-items: center;
     font-size: 15px;
