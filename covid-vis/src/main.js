@@ -5,7 +5,10 @@ import App from './App'
 import router from './router'
 import echarts from 'echarts'
 import vueResource from 'vue-resource'
+import ant from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.less'
 
+Vue.use(ant)
 Vue.use(vueResource)
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false

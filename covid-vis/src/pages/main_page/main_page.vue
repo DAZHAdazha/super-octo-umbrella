@@ -9,14 +9,17 @@
 
         <div class="block-left-right-content">
           <ranking-board />
+          <!-- 疫情排名 -->
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
-              <rose-chart/>
+              <rose-chart />
+              <!-- 地图模块 -->
 
               <!-- <water-level-chart /> -->
 
               <scroll-board />
+              <!-- 新闻模块 -->
             </div>
 
             <!-- <cards /> -->
@@ -28,7 +31,7 @@
 </template>
 
 <script>
-import topHeader from './datav/topHeader'
+import topHeader from '../components/topHeader'
 import digitalFlop from './datav/digitalFlop'
 import rankingBoard from './datav/rankingBoard'
 import roseChart from './datav/roseChart'
@@ -67,7 +70,7 @@ export default {
   color: #fff;
 
   #dv-full-screen-container {
-    background-image: url('./datav/img/bg.png');
+    background-image: url('../components/img/bg.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
     display: flex;

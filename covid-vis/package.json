@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.9.0",
+    "ant-design-vue": "^1.6.2",
     "axios": "^0.19.2",
     "echarts": "^4.8.0",
     "jquery": "^3.5.1",
@@ -47,7 +48,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "less": "^3.11.3",
+    "less": "^2.7.3",
     "mockjs": "^1.1.0",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",

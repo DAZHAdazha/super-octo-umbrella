@@ -1,6 +1,6 @@
 <template>
   <div id="scroll-board">
-    <dv-scroll-board :config="config" />
+    <dv-scroll-board :config="config"/>
   </div>
 </template>
 
@@ -44,14 +44,14 @@ export default {
           for (var i = 0; i < news.length; i++) {
             var arr=new Array();
             arr[0]=news[i].pubDateStr;
-            arr[1]=news[i].title;
+            arr[1]='<a href='+news[i].sourceUrl+'>'+news[i].title+'</a>';
             arr[2]=news[i].infoSource;
             this.config.data.push(arr);
           }
           this.config = { ...this.config };
         })
         .catch(err => {
-          console.log("fail");
+          console.log("Newsfail");
         });
     }
   }
