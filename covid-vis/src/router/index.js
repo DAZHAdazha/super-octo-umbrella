@@ -5,6 +5,7 @@ import Home from '@/pages/home/home'
 import main_page from '@/pages/main_page/main_page'
 import news from '@/pages/news/news'
 import dataV from '@jiaminghi/data-view'
+// import transmit from '@/pages/transmit/transmit.vue'
 
 Vue.use(dataV)
 Vue.use(Router)
@@ -26,5 +27,10 @@ export default new Router({
       name: 'news',
       component: news
     }
+    // {
+    //   path: '/transmit',
+    //   name: 'transmit',
+    //   component: transmit
+    // }
   ]
 })

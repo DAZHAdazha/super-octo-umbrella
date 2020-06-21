@@ -32,40 +32,15 @@ export default {
         },
         visualMap: {
           min: 0,
-          max: 1000,
+          max: 250,
           left: 26,
           bottom: 40,
+          textStyle: { color: '#eeeeee' },
           showLabel: !0,
           text: ['高', '低'],
-          pieces: [
-            {
-              gt: 100,
-              label: '> 100 人',
-              color: '#7f1100'
-            },
-            {
-              gte: 10,
-              lte: 100,
-              label: '10 - 100 人',
-              color: '#ff5428'
-            },
-            {
-              gte: 1,
-              lt: 10,
-              label: '1 - 9 人',
-              color: '#ff8c71'
-            },
-            {
-              gt: 0,
-              lt: 1,
-              label: '疑似',
-              color: '#ffd768'
-            },
-            {
-              value: 0,
-              color: '#ffffff'
-            }
-          ],
+          inRange: {
+            color: ['#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+          },
           show: !0
         },
         geo: {
@@ -76,7 +51,7 @@ export default {
             max: 2
           },
           zoom: 1.23,
-          top: 120,
+          top: 30,
           label: {
             normal: {
               show: !0,
@@ -119,41 +94,16 @@ export default {
         },
         visualMap: {
           min: 0,
-          max: 1000,
+          max: 2500000,
           left: 26,
           bottom: 40,
-          showLabel: !0,
+          showLabel: true,
           text: ['高', '低'],
-          pieces: [
-            {
-              gt: 1000000,
-              lte: 100000000,
-              label: '> 100 人',
-              color: '#7f1100'
-            },
-            {
-              gte: 10000,
-              lte: 1000000,
-              label: '10 - 100 人',
-              color: '#ff5428'
-            },
-            {
-              gte: 1,
-              lt: 10000,
-              label: '1 - 9 人',
-              color: '#ff8c71'
-            },
-            {
-              gt: 0,
-              lt: 1,
-              label: '疑似',
-              color: '#ffd768'
-            },
-            {
-              value: 0,
-              color: '#ffffff'
-            }
-          ],
+          textStyle: { color: '#eeeeee' },
+          inRange: {
+            // color: ['#800000', '#A52A2A', '#CD5C5C', '#F08080', '#D2691E', '#FF8C00', '#fdae61', '#FFA500', '#FFE4B5', '#FFFAF0']
+            color: ['#FFFAF0', '#F08080', '#800000']
+          },
           show: !0
         },
         nameMap: {
@@ -504,8 +454,8 @@ export default {
 #rose-chart {
   width: 50%;
   height: 1300px;
-  background-color: rgba(255, 255, 255, 0.5);
-  // background-color: rgba(6, 30, 93, 0.5);
+  // background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(6, 30, 93, 0.5);
   border-top: 2px solid rgba(1, 153, 209, .5);
   box-sizing: border-box;
 
