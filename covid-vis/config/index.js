@@ -25,6 +25,12 @@ module.exports = {
         pathRewrite: {
           '^/api': ''//后面可以使重写的新路径，一般不做更改
         }
+      },
+      '/test': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/test': '/static/mock'
+        }
       }
     },
 
