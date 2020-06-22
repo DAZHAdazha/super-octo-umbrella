@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Text
 from flask_cors import CORS
 from sqlalchemy import or_
-
-
+import random
+import json
 import csv
 
 excelFile = r'D:\肺炎\DXY-COVID-19-Data\csv\DXYRumors.csv' # 修改为存放班级的excel位置
@@ -68,8 +68,19 @@ class Rumors(db.Model):
   # 对于一对多模型，在一的一的一方
   # backref='role'表示User要用的属性
   # repr()方法显示一个可读字符串
+
   def __repr__(self):
     return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.body, self.time)
+
+  def to_json(self):
+    json_data = {
+      'id': self.id,
+      'title': self.title,
+      'summary': self.summary,
+      'body': self.body,
+      'time': self.time
+    }
+    return json.dumps(json_data, ensure_ascii=False)
 
 class News(db.Model):
   # 定义表名
@@ -84,9 +95,19 @@ class News(db.Model):
   # 对于一对多模型，在一的一的一方
   # backref='role'表示User要用的属性
   # repr()方法显示一个可读字符串
+
   def __repr__(self):
     return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.source, self.time)
 
+  def to_json(self):
+    json_data = {
+      'id': self.id,
+      'title': self.title,
+      'summary': self.summary,
+      'source': self.source,
+      'time': self.time
+    }
+    return json.dumps(json_data, ensure_ascii=False)
 
 
 # 用flash给模板传递消息, 模板中需要遍历消息,需要对内容进行加密，因此要设置
@@ -121,25 +142,55 @@ class News(db.Model):
 def get_order_id(order_id): #此次参数是为了方便后面return中再次使用
     return 'order_id %s' % order_id
 
-@app.route('/rumors',methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
-def get_rumor_id(): #此次参数是为了方便后面return中再次使用
+@app.route('/rumors_search',methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
+def get_rumor(): #此次参数是为了方便后面return中再次使用
     if request.method == 'POST':
       q = request.get_json()['title']
-      print(q)
+      # print(q)
       rumor = Rumors.query.filter(or_(Rumors.title.contains(q), Rumors.body.contains(q), Rumors.summary.contains(q), Rumors.time.contains(q)))
-      print(rumor.all())
-      return 'yes'
-    return render_template('index.html')\
+      dict = []
+      # print(rumor.all())
+      for i in rumor.all():
+        dict.append(i.to_json())
+      # print(dict)
+    return json.dumps(dict)
 
-@app.route('/news',methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
-def get_news_id(): #此次参数是为了方便后面return中再次使用
+
+@app.route('/rumors', methods=['GET']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
+def show_rumor(): #此次参数是为了方便后面return中再次使用
+      random_list = []
+      random_count = 0
+      rows = db.session.query(Rumors).count()
+      mark = True
+      while mark:
+        if random_count >= 10:
+          break
+        else:
+          random_num = random.randint(0, rows-1)
+          if random_num in random_list:
+            continue
+          else:
+            random_list.append(random_num)
+            random_count += 1
+      dict = []
+      for i in random_list:
+        dict.append(Rumors.query.filter_by(id=i).first().to_json())
+      # print(dict)
+      return json.dumps(dict)
+
+
+
+@app.route('/news_search',methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
+def get_news(): #此次参数是为了方便后面return中再次使用
     if request.method == 'POST':
       q = request.get_json()['title']
       print(q)
+      dict = []
       news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q), News.time.contains(q)))
       print(news.all())
-      return 'yes'
-    return render_template('index.html')
+      for i in news.all():
+        dict.append(i.to_json())
+    return json.dumps(dict)
 
 # 4.启动程序
 if __name__ == '__main__':
