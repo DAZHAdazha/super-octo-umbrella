@@ -36,10 +36,10 @@ export default {
           left: 26,
           bottom: 28,
           textStyle: { color: '#eeeeee' },
-          showLabel: !0,
+          showLabel: false,
           text: ['高', '低'],
           inRange: {
-            color: ['#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+            color: ['#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
           },
           show: !0
         },
@@ -54,7 +54,7 @@ export default {
           top: 30,
           label: {
             normal: {
-              show: !0,
+              show: false,
               fontSize: '14',
               color: 'rgba(0,0,0,0.7)'
             }
@@ -102,7 +102,7 @@ export default {
           textStyle: { color: '#eeeeee' },
           inRange: {
             // color: ['#800000', '#A52A2A', '#CD5C5C', '#F08080', '#D2691E', '#FF8C00', '#fdae61', '#FFA500', '#FFE4B5', '#FFFAF0']
-            color: ['#FFFAF0', '#F08080', '#800000']
+            color: ['#FFFAF0', '#FFA500', '#F08080', '#800000']
           },
           show: !0
         },
