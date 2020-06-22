@@ -101,20 +101,20 @@ export default {
   .infected {
     position: absolute;
     width: 300px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
-    left: 150px;
+    left: 200px;
     top: 45px;
     transform: translateX(-50%);
   }
 
   .add {
     position: absolute;
-    font-size: 17px;
+    font-size: 16px;
     width: 300px;
     font-weight: bold;
-    left: 150px;
-    right: 130px;
+    left: 200px;
+    right: 200px;
     top: 20px;
     transform: translateX(-50%);
   }

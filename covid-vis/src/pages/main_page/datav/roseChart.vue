@@ -10,7 +10,6 @@
 <script>
 import axios from 'axios'
 import echarts from 'echarts'
-
 import china from 'echarts/map/json/china.json'
 import world from 'echarts/map/json/world.json'
 echarts.registerMap('china', china) // 注册对应的地图;
