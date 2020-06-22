@@ -1,7 +1,8 @@
 <template>
   <div id="ranking-board">
     <div class="ranking-board-title">感染人数排名</div>
-    <dv-scroll-ranking-board :config="config" />
+    <dv-scroll-ranking-board :config="config" v-if="completed" />
+    <dv-loading v-if="loading">Loading...</dv-loading>
   </div>
 </template>
 
@@ -13,8 +14,10 @@ export default {
     return {
       config: {
         data: [],
-        rowNum: 9
-      }
+        rowNum: 10
+      },
+      completed:false,
+      loading:true
     };
   },
   mounted() {
@@ -32,6 +35,8 @@ export default {
             this.config.data.push({name:response[i].country,value:response[i].cases})
           }
           console.log(this.config.data);
+          this.loading = false;
+          this.completed = true;
           this.config = { ...this.config };
         })
         .catch(err => {
@@ -64,8 +69,5 @@ export default {
     font-size: 15px;
   }
 
-  .dv-scroll-ranking-board {
-    flex: 1;
-  }
 }
 </style>

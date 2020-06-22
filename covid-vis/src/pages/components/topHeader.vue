@@ -1,13 +1,13 @@
 <template>
   <div id="top-header">
-    <dv-border-box-4 style="width:300px;height:100px;">
+    <dv-border-box-4 style="width:300px;height:90px;">
       <div class="infected" v-if="comming">全球感染人数:{{globalnumber}}</div>
       <div class="add" v-if="comming">昨日新增感染人数:{{globaladdnumber}}</div>
     </dv-border-box-4>
     <!-- <dv-decoration-8 style="width:300px;height:50px;" /> -->
     <dv-decoration-5 class="header-center-decoration" />
     <div class="center-title">实时疫情数据</div>
-    <dv-border-box-4 style="width:300px;height:100px;" :reverse="true">
+    <dv-border-box-4 style="width:300px;height:90px;" :reverse="true">
       <div class="infected" v-if="comming">国内感染人数:{{domesticnumber}}</div>
       <div class="add" v-if="comming">昨日新增感染人数:{{domesticaddnumber}}</div>
       <div class="menu">
@@ -72,7 +72,7 @@ export default {
 #top-header {
   position: relative;
   width: 100%;
-  height: 100px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
@@ -101,16 +101,16 @@ export default {
   .infected {
     position: absolute;
     width: 300px;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     left: 150px;
-    top: 50px;
+    top: 45px;
     transform: translateX(-50%);
   }
 
   .add {
     position: absolute;
-    font-size: 20px;
+    font-size: 17px;
     width: 300px;
     font-weight: bold;
     left: 150px;

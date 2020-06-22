@@ -34,7 +34,7 @@ export default {
           min: 0,
           max: 250,
           left: 26,
-          bottom: 40,
+          bottom: 28,
           textStyle: { color: '#eeeeee' },
           showLabel: !0,
           text: ['高', '低'],
