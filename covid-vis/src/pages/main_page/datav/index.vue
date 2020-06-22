@@ -5,24 +5,21 @@
       <top-header />
 
       <div class="main-content">
-        <!-- <digital-flop /> -->
+        <digital-flop />
 
         <div class="block-left-right-content">
           <ranking-board />
-          <!-- 疫情排名 -->
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
               <rose-chart />
-              <!-- 地图模块 -->
 
-              <!-- <water-level-chart /> -->
+              <water-level-chart />
 
               <scroll-board />
-              <!-- 新闻模块 -->
             </div>
 
-            <!-- <cards /> -->
+            <cards />
           </div>
         </div>
       </div>
@@ -31,34 +28,29 @@
 </template>
 
 <script>
-import topHeader from '../components/topHeader'
-import digitalFlop from './datav/digitalFlop'
-import rankingBoard from './datav/rankingBoard'
-import roseChart from './datav/roseChart'
-import waterLevelChart from './datav/waterLevelChart'
-import scrollBoard from './datav/scrollBoard'
-import cards from './datav/cards'
+import topHeader from './topHeader'
+import digitalFlop from './digitalFlop'
+import rankingBoard from './rankingBoard'
+import roseChart from './roseChart'
+import waterLevelChart from './waterLevelChart'
+import scrollBoard from './scrollBoard'
+import cards from './cards'
 
 export default {
-  name: 'main_page',
+  name: 'DataView',
   components: {
     topHeader,
-    // digitalFlop,
+    digitalFlop,
     rankingBoard,
     roseChart,
-    // waterLevelChart,
+    waterLevelChart,
     scrollBoard,
-    // cards
+    cards
   },
   data () {
-    return {
-    }
+    return {}
   },
-  methods: {
-  },
-  mounted () {
-    this.getData()
-  }
+  methods: {}
 }
 </script>
 
@@ -70,7 +62,7 @@ export default {
   color: #fff;
 
   #dv-full-screen-container {
-    background-image: url('../components/img/bg.png');
+    background-image: url('./img/bg.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
     display: flex;
