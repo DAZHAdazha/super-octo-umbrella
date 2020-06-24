@@ -39,6 +39,20 @@ module.exports = {
           '^/globaldata': ''//后面可以使重写的新路径，一般不做更改
         }
       },
+      '/baidu':{
+        target:'http://index.baidu.com/api/WordGraph/multi?wordlist%5B%5D=%E7%96%AB%E6%83%85',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/baidu': ''//后面可以使重写的新路径，一般不做更改
+        }
+      },
+      '/rumors_search':{
+        target:'http://localhost:5000/rumors_search',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/rumors_search': ''//后面可以使重写的新路径，一般不做更改
+        }
+      },
     },
 
     // Various Dev Server settings

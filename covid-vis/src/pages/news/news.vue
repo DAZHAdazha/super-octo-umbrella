@@ -4,6 +4,12 @@
       <top-header />
       <div class="main-content">
         <!-- <digital-flop /> -->
+        <div class="leftContent">
+          <searchArea></searchArea>
+        </div>
+        <div class="rightContent">
+          <sideBar></sideBar>
+        </div>
       </div>
     </dv-full-screen-container>
   </div>
@@ -12,10 +18,14 @@
 <script>
 import axios from "axios";
 import topHeader from "../components/topHeader";
+import searchArea from "./components/searchArea";
+import sideBar from "./components/sideBar"
 export default {
   name: "news",
   components: {
-    topHeader
+    topHeader,
+    searchArea,
+    sideBar
   }
 };
 </script>
@@ -36,11 +46,19 @@ export default {
   }
 
   .main-content {
+    margin-top: 30px;
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
+  .leftContent{
+    width: 60%;
+  }
 
+  .rightContent{
+    width: 35%;
+    margin-left: 1%;
+  }
 }
 </style>
