@@ -82561,6 +82561,7 @@ extendComponentModel({
         // 提示边框颜色
         borderColor: '#333',
 
+
         // 提示边框圆角，单位px，默认为4
         borderRadius: 4,
 

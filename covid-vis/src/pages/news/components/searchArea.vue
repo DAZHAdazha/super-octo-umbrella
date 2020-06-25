@@ -1,6 +1,7 @@
 <template>
   <div id="searchBox">
     <a-input-search placeholder="搜索谣言" enter-button="Search" @search="onSearch" />
+    <div></div>
     <a-list item-layout="horizontal" :data-source="data">
       <a-list-item slot="renderItem" slot-scope="item,index">
         <a-list-item-meta>
@@ -18,6 +19,7 @@
       </a-list-item>
     </a-list>
   </div>
+  
 </template>
 
 <script>
@@ -81,7 +83,11 @@ export default {
 
 <style lang="less">
 #searchBox {
+
   box-sizing: border-box;
   box-shadow: 0 0 2px blue;
+  margin-top: 20px;
 }
+
+
 </style>

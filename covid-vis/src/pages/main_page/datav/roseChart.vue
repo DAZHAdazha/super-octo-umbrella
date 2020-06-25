@@ -49,13 +49,16 @@ export default {
             min: 1,
             max: 2
           },
-          zoom: 1.23,
-          top: 30,
+          zoom: 1.2,
+          top: 20,
           label: {
             normal: {
               show: false,
               fontSize: '14',
               color: 'rgba(0,0,0,0.7)'
+            },
+            emphasis: {
+              color: '#f46d43'
             }
           },
           itemStyle: {
@@ -65,7 +68,7 @@ export default {
               borderColor: 'rgba(0, 0, 0, 0.2)'
             },
             emphasis: {
-              areaColor: '#f2d5ad',
+              areaColor: '#F9F900',
               shadowOffsetX: 0,
               shadowOffsetY: 0,
               borderWidth: 0
@@ -101,7 +104,7 @@ export default {
           textStyle: { color: '#eeeeee' },
           inRange: {
             // color: ['#800000', '#A52A2A', '#CD5C5C', '#F08080', '#D2691E', '#FF8C00', '#fdae61', '#FFA500', '#FFE4B5', '#FFFAF0']
-            color: ['#FFFAF0', '#FFA500', '#F08080', '#800000']
+            color: ['#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
           },
           show: !0
         },
@@ -160,7 +163,7 @@ export default {
           Estonia: '爱沙尼亚',
           Ethiopia: '埃塞俄比亚',
           Finland: '芬兰',
-          Fiji: '斐',
+          Fiji: '斐济',
           'Falkland Islands': '福克兰群岛',
           France: '法国',
           Gabon: '加蓬',
@@ -329,13 +332,16 @@ export default {
             min: 1,
             max: 2
           },
-          zoom: 1.23,
-          top: 120,
+          zoom: 1.22,
+          top: 100,
           label: {
             normal: {
               show: false,
               fontSize: '14',
               color: 'rgba(0,0,0,0.7)'
+            },
+            emphasis: {
+              color: '#f46d43'
             }
           },
           itemStyle: {
@@ -345,7 +351,7 @@ export default {
               borderColor: 'rgba(0, 0, 0, 0.2)'
             },
             emphasis: {
-              areaColor: '#f2d5ad',
+              areaColor: '#F9F900',
               shadowOffsetX: 0,
               shadowOffsetY: 0,
               borderWidth: 0

@@ -7,11 +7,11 @@
       <div class="main-content">
         <digital-flop />
 
-        <div class="block-left-right-content">
+        <div class="block-left-right-content" >
           <ranking-board />
 
           <div class="block-top-bottom-content">
-            <div class="block-top-content">
+            <div class="block-top-content" >
               <rose-chart />
 
               <water-level-chart />
@@ -56,8 +56,8 @@ export default {
 
 <style lang="less">
 #data-view {
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 50%;
   background-color: #030409;
   color: #fff;
 

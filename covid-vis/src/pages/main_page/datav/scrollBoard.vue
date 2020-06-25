@@ -15,7 +15,7 @@ export default {
         header: ["时间", "内容", "来源"],
         data: [],
         index: true,
-        columnWidth: [50, 100, 300, 100],
+        columnWidth: [50,100, 500, 150],
         align: ["center"],
         rowNum: 7,
         headerBGC: "#1981f6",
