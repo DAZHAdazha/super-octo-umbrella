@@ -47,7 +47,7 @@ module.exports = {
         }
       },
       '/rumors_search':{
-        target:'http://localhost:5000/rumors_search',
+        target:'http://127.0.0.1:5000/rumors_search',
         changeOrigin: true,
         pathRewrite: {
           '^/rumors_search': ''//后面可以使重写的新路径，一般不做更改
