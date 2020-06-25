@@ -39,12 +39,14 @@ export default {
           title: value
         })
         .then(res => {
-          for (var i = 0; i < res.length - 1; i++) {
-            this.data.push({
-              title: news[i].title,
-              description: news[i].summary,
-              linkage: news[i].sourceUrl
-            });
+          if (res) {
+            this.data.length = 0;
+            for (var i = 0; i < res.length - 1; i++) {
+              this.data.push({
+                title: res[i].title,
+                description: res[i].body
+              });
+            }
           }
         })
         .catch(err => {
