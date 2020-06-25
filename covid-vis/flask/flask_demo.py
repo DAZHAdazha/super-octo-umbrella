@@ -37,7 +37,7 @@ def read_rumor(rumorFile, title, body, summary, time):
     time.pop(0)
 
 
-def read_news(newsFile, title, source, summary, time):
+def read_news(newsFile, title, source, summary,url, time):
   with open(newsFile,'r', encoding='UTF-8') as f:
     reader = csv.reader(f)
     for row in reader:
@@ -45,6 +45,7 @@ def read_news(newsFile, title, source, summary, time):
       title.append(row[3])
       summary.append(row[4])
       source.append(row[5])
+      url.append(row[6])
     title.pop(0)
     summary.pop(0)
     source.pop(0)
@@ -84,9 +85,10 @@ class News(db.Model):
   summary = db.Column(Text)
   source = db.Column(Text)
   time = db.Column(Text)
+  url = db.Column(Text)
 
   def __repr__(self):
-    return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.source, self.time)
+    return '<News: %s %s %s %s %s>' % (self.title, self.summary, self.source, self.time, self.url)
 
   def to_json(self):
     json_data = {
@@ -94,6 +96,7 @@ class News(db.Model):
       'title': self.title,
       'summary': self.summary,
       'source': self.source,
+      'url': self.url,
       'time': self.time
     }
     return json.dumps(json_data, ensure_ascii=False)
@@ -109,7 +112,7 @@ def get_rumor(): #此次参数是为了方便后面return中再次使用
       # print(rumor.all())
       for i in rumor.all():
         dict.append(i.to_json())
-      # print(dict)
+      print(json.dumps(dict))
     return json.dumps(dict)
 
 
@@ -144,7 +147,7 @@ def get_news():
       # print(q)
       dict = []
       news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q), News.time.contains(q)))
-      # print(news.all())
+      print(news.all())
       for i in news.all():
         dict.append(i.to_json())
     return json.dumps(dict)
@@ -154,9 +157,10 @@ def sql_initialize():
     time = []
     title = []
     summary = []
-    read_news(newsFile, title, source, summary, time)
+    url = []
+    read_news(newsFile, title, source, summary, url, time)
     for i in range(len(title)):
-      item = News(title=title[i], summary=summary[i], source=source[i], time=time[i])
+      item = News(title=title[i], summary=summary[i], source=source[i], url=url[i], time=time[i])
       db.session.add(item)
     db.session.commit()
     body = []
@@ -172,11 +176,11 @@ def sql_initialize():
 
 # 4.启动程序
 if __name__ == '__main__':
-    #只在初始化数据库时运行下面代码：
+    # 只在初始化数据库时运行下面代码：
     # db.drop_all()
     # 创建表
     # db.create_all()
-    #sql_initialize()
+    # sql_initialize()
 
     #执行了app.run(),就会将flask程序运行在一个简易的服务器（Flask 提供，用于测试）
     app.run(debug=True)
