@@ -8,15 +8,17 @@ import json
 import csv
 
 # 需要修改对应地址
-rumorFile = r'D:\vue_node\COVID-19-Visualization\covid-vis\flask\DXYRumors.csv'
+# rumorFile = r'D:\vue_node\COVID-19-Visualization\covid-vis\flask\DXYRumors.csv'
 newsFile = r'D:\肺炎\DXY-COVID-19-Data\csv\DXYNews.csv'
+rumorFile = r'D:\肺炎\DXY-COVID-19-Data\csv\DXYRumors.csv'
 
 
 
 # 2.创建Flask 应用程序实例
 # 需要传入__name__, 作用是为了确定资源所在路径
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1:3306/cov19'  # mysql://username:password@hostname/database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:fengyunjia@127.0.0.1:3306/flask_sql_demo'  # mysql://username:password@hostname/database
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1:3306/cov19'  # mysql://username:password@hostname/database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.secret_key = 'root' #加密混淆使用
