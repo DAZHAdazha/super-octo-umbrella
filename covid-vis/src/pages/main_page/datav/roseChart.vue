@@ -17,6 +17,10 @@ echarts.registerMap('world', world)
 
 export default {
   name: 'RoseChart',
+  props: {
+    china: Array,
+    world: Array
+  },
   data () {
     return {
       otherlist: [],
@@ -369,88 +373,28 @@ export default {
       }
     }
   },
-  methods: {
-    getData () {
-      // 用于获取新浪API上的数据;
-      axios.get('/api').then(response => {
-        response.data.data.list.forEach(element => {
-          this.chinaOption.series[0].data.push({name: element.name, value: parseInt(element.econNum)})
-        })
-
-        var chinaMap = echarts.init(document.getElementById('china-map'))
-
-        let tempOptionChina = JSON.parse(JSON.stringify(this.chinaOption))
-
-        chinaMap.setOption(tempOptionChina)
-
-        this.worldOption.series[0].data.push({name: '中国', value: parseInt(response.data.data.gntotal)})
-        console.log('china-total: ' + response.data.data.gntotal)
-
-        response.data.data.otherlist.forEach(element => {
-          this.worldOption.series[0].data.push({name: element.name, value: parseInt(element.value)})
-        })
-
-        var worldMap = echarts.init(document.getElementById('world-map'))
-
-        let tempOptionWorld = JSON.parse(JSON.stringify(this.worldOption))
-        console.log(tempOptionWorld.series[0].data)
-        worldMap.setOption(tempOptionWorld)
+  watch: {
+    china (newData, oldData) {
+      this.china = newData
+      this.china.forEach(element => {
+        this.chinaOption.series[0].data.push({name: element.name, value: parseInt(element.econNum)})
       })
+      var chinaMap = echarts.init(document.getElementById('china-map'))
+      let tempOptionChina = JSON.parse(JSON.stringify(this.chinaOption))
+      chinaMap.setOption(tempOptionChina)
+    },
+
+    world (newData, oldData) {
+      this.world = newData
+      this.world.forEach(element => {
+        this.worldOption.series[0].data.push({name: element.name, value: parseInt(element.value)})
+      })
+
+      var worldMap = echarts.init(document.getElementById('world-map'))
+
+      let tempOptionWorld = JSON.parse(JSON.stringify(this.worldOption))
+      worldMap.setOption(tempOptionWorld)
     }
-    // createData () {
-    //   const { randomExtend } = this
-
-    //   this.option = {
-    //     series: [
-    //       {
-    //         type: 'pie',
-    //         radius: '50%',
-    //         roseSort: false,
-    //         data: [
-    //           { name: '路基', value: randomExtend(40, 70) },
-    //           { name: '交安设施', value: randomExtend(20, 30) },
-    //           { name: '日常养护', value: randomExtend(10, 50) },
-    //           { name: '桥通', value: randomExtend(5, 20) },
-    //           { name: '交通事故', value: randomExtend(40, 50) },
-    //           { name: '路面', value: randomExtend(20, 30) },
-    //           { name: '绿化', value: randomExtend(5, 10) },
-    //           { name: '计日工', value: randomExtend(20, 35) },
-    //           { name: '除雪', value: randomExtend(5, 10) }
-    //         ],
-    //         insideLabel: {
-    //           show: false
-    //         },
-    //         outsideLabel: {
-    //           formatter: '{name} {percent}%',
-    //           labelLineEndLength: 20,
-    //           style: {
-    //             fill: '#fff'
-    //           },
-    //           labelLineStyle: {
-    //             stroke: '#fff'
-    //           }
-    //         },
-    //         roseType: true
-    //       }
-    //     ],
-    //     color: ['#da2f00', '#fa3600', '#ff4411', '#ff724c', '#541200', '#801b00', '#a02200', '#5d1400', '#b72700']
-    //   }
-    // },
-    // randomExtend (minNum, maxNum) {
-    //   if (arguments.length === 1) {
-    //     return parseInt(Math.random() * minNum + 1, 10)
-    //   } else {
-    //     return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10)
-    //   }
-    // }
-  },
-  mounted () {
-    this.getData()
-    // const { createData } = this
-
-    // createData()
-
-    // setInterval(createData, 30000)
   }
 }
 </script>
@@ -465,11 +409,12 @@ export default {
   box-sizing: border-box;
 
   #china-map{
-    height: 250px;
+    // width: 100px;
+    height: 100px;
   }
 
   #world-map{
-    height: 450px;
+    height: 200px;
   }
 
   .rose-chart-title {

@@ -1,15 +1,15 @@
 <template>
-  <div id="data-view">
+  <div id='data-view'>
     <dv-full-screen-container>
       <top-header />
 
-      <div class="main-content">
+      <div class='main-content'>
         <!-- <digital-flop /> -->
 
-        <div class="block-left-right-content">
+        <div class='block-left-right-content'>
           <ranking-board />
           <!-- 疫情排名 -->
-          <rose-chart />
+          <rose-chart :china="china" :world="world"></rose-chart>
           <!-- 地图模块 -->
           <!-- <water-level-chart /> -->
           <scroll-board />
@@ -20,16 +20,17 @@
 </template>
 
 <script>
-import topHeader from "../components/topHeader";
-import digitalFlop from "./datav/digitalFlop";
-import rankingBoard from "./datav/rankingBoard";
-import roseChart from "./datav/roseChart";
-import waterLevelChart from "./datav/waterLevelChart";
-import scrollBoard from "./datav/scrollBoard";
-import cards from "./datav/cards";
+import axios from 'axios'
+import topHeader from '../components/topHeader'
+// import digitalFlop from './datav/digitalFlop'
+import rankingBoard from './datav/rankingBoard'
+import roseChart from './datav/roseChart'
+// import waterLevelChart from './datav/waterLevelChart'
+import scrollBoard from './datav/scrollBoard'
+// import cards from './datav/cards'
 
 export default {
-  name: "main_page",
+  name: 'main_page',
   components: {
     topHeader,
     // digitalFlop,
@@ -39,17 +40,27 @@ export default {
     scrollBoard
     // cards
   },
-  data() {
-    return {};
+  data () {
+    return {
+      china: [],
+      world: []
+    }
   },
-  methods: {},
-  mounted() {
-    // this.getData()
+  methods: {
+    getData () {
+      axios.get('/api').then(response => {
+        this.china = response.data.data.list
+        this.world = response.data.data.worldlist
+      })
+    }
+  },
+  mounted () {
+    this.getData()
   }
-};
+}
 </script>
 
-<style lang="less">
+<style lang='less'>
 #data-view {
   width: 100%;
   height: 100%;
@@ -57,7 +68,7 @@ export default {
   color: #fff;
 
   #dv-full-screen-container {
-    background-image: url("../components/img/bg.png");
+    background-image: url('../components/img/bg.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
     display: flex;
