@@ -400,13 +400,12 @@ export default {
 </script>
 
 <style lang="less">
-#rose-chart {
-  width: 50%;
-  height: 1300px;
-  // background-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(6, 30, 93, 0.5);
-  border-top: 2px solid rgba(1, 153, 209, .5);
-  box-sizing: border-box;
+// #rose-chart {
+  // width: 50%;
+  // height: 1300px;
+  // background-color: rgba(6, 30, 93, 0.5);
+  // border-top: 2px solid rgba(1, 153, 209, .5);
+  // box-sizing: border-box;
 
   #china-map{
     // width: 100px;
@@ -429,5 +428,5 @@ export default {
   .dv-charts-container {
     height: calc(~"100% - 50px");
   }
-}
+// }
 </style>

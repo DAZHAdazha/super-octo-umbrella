@@ -9,7 +9,12 @@
         <div class='block-left-right-content'>
           <ranking-board />
           <!-- 疫情排名 -->
-          <rose-chart :china="china" :world="world"></rose-chart>
+          <div class="chart-container">
+            <!-- <rose-chart :china="china" :world="world"></rose-chart> -->
+            <rose-circle :jwsr="jwsr"></rose-circle>
+            <line-chart :history="history"></line-chart>
+            <world-line :worldHistory="worldHistory"></world-line>
+          </div>
           <!-- 地图模块 -->
           <!-- <water-level-chart /> -->
           <scroll-board />
@@ -28,6 +33,9 @@ import roseChart from './datav/roseChart'
 // import waterLevelChart from './datav/waterLevelChart'
 import scrollBoard from './datav/scrollBoard'
 // import cards from './datav/cards'
+import roseCircle from './datav/roseCircle'
+import lineChart from './datav/lineChart'
+import worldLine from './datav/worldLine'
 
 export default {
   name: 'main_page',
@@ -37,13 +45,19 @@ export default {
     rankingBoard,
     roseChart,
     // waterLevelChart,
-    scrollBoard
+    scrollBoard,
+    roseCircle,
+    lineChart,
+    worldLine
     // cards
   },
   data () {
     return {
-      china: [],
-      world: []
+      china: [], // 中国地图数据
+      world: [], // 世界地图数据
+      jwsr: [], // 中国境外新增数据
+      history: [], // 中国历史数据
+      worldHistory: [] // 世界历史数据
     }
   },
   methods: {
@@ -51,6 +65,9 @@ export default {
       axios.get('/api').then(response => {
         this.china = response.data.data.list
         this.world = response.data.data.worldlist
+        this.jwsr = response.data.data.jwsrTop
+        this.history = response.data.data.historylist
+        this.worldHistory = response.data.data.otherhistorylist
       })
     }
   },
@@ -86,6 +103,15 @@ export default {
     display: flex;
     margin-top: 20px;
     height: 100%;
+  }
+
+  .chart-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(6, 30, 93, 0.5);
+    border-top: 2px solid rgba(1, 153, 209, .5);
+    box-sizing: border-box;
   }
 
 }
