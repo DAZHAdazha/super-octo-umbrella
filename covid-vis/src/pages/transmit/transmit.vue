@@ -1,13 +1,13 @@
 <template>
   <div>
     <div id="main" style="width: 1000px;height:800px;"></div>
-    <div id="chart-panel">transmit testing</div>
+    <div id="chart-panel"></div>
   </div>
 </template>
 
 <script>
-import $ from "jquery";
 import echarts from "echarts";
+import $ from "jquery";
 export default {
   name: "transmit",
   mounted() {
@@ -17,13 +17,13 @@ export default {
     chart() {
       var myChart = echarts.init(document.getElementById("main"));
       // 人群数量
-      var nodesnum = 360;
+      var nodesnum = 200;
       // 新冠肺炎传播源数量
-      var xiadu = 1;
+      var source = 1;
       // 新冠肺炎的传染性，接触就传染的概率
-      var infectivity = 0.2;
+      var infectivity = 0.4;
       // 治疗天数
-      var cureday = 4;
+      var cureday = 14;
       // 死亡率
       var dierate = 0.2;
       // 社区结构大小
@@ -32,14 +32,13 @@ export default {
       var density = 0.35;
 
       $(`
-    <div class='input-item chuan' @click='chuanbo'>点击进行传播</div>
+    <div class='input-item chuan' @click='chuanbo'>点击模拟下一天</div>
     <div class='text'>传染性:0.2</div>
     <input class='slider' type='range' min='0' max='0.5' value='0.2' step='0.01' style=''>
     <div class='textcure'>潜伏期天数:4</div>
     <input class='slidercure' type='range' min='2' max='30' value='4' step='1' style=''>
-    <div class='textdie'>致死率:0.2</div>
+    <div class='textdie'>致死率:0.05</div>
     <input class='sliderdie' type='range' min='0' max='1' value='0.2' step='0.01' style=''>
-    <div class='r0'>估计R0:</div>
     `).appendTo($("#chart-panel"));
 
       $(".input-item").css({
@@ -151,19 +150,19 @@ export default {
         width: "10rem",
         height: "2rem"
       });
-      $(".r0").css({
-        position: "absolute",
-        top: "5px",
-        left: "12rem",
-        display: "-ms-flexbox",
-        display: "flex",
-        "-ms-flex-wrap": "wrap",
-        "flex-wrap": "wrap",
-        "-ms-flex-align": "center",
-        "align-items": "center",
-        width: "10rem",
-        height: "2rem"
-      });
+      // $(".r0").css({
+      //   position: "absolute",
+      //   top: "5px",
+      //   left: "12rem",
+      //   display: "-ms-flexbox",
+      //   display: "flex",
+      //   "-ms-flex-wrap": "wrap",
+      //   "flex-wrap": "wrap",
+      //   "-ms-flex-align": "center",
+      //   "align-items": "center",
+      //   width: "10rem",
+      //   height: "2rem"
+      // });
 
       var nodes = [
         {
@@ -233,41 +232,6 @@ export default {
       //随机一个传播源
       nodes[Math.floor(Math.random() * nodesnum)].category = 0;
 
-      //估计R0
-      var r0 = (
-        (2 * cureday * infectivity * links.length) /
-        nodes.length
-      ).toFixed(2);
-
-      $(".r0").text("估计R0:" + r0);
-      $(".slider").change(function() {
-        infectivity = this.value;
-        $(".text").text("传染性:" + infectivity);
-        var r0 = (
-          (2 * cureday * infectivity * links.length) /
-          nodes.length
-        ).toFixed(2);
-        $(".r0").text("估计R0:" + r0);
-      });
-      $(".slidercure").change(function() {
-        cureday = this.value;
-        $(".textcure").text("潜伏期天数:" + cureday);
-        var r0 = (
-          (2 * cureday * infectivity * links.length) /
-          nodes.length
-        ).toFixed(2);
-        $(".r0").text("估计R0:" + r0);
-      });
-      $(".sliderdie").change(function() {
-        dierate = this.value;
-        $(".textdie").text("致死率:" + dierate);
-        var r0 = (
-          (2 * cureday * infectivity * links.length) /
-          nodes.length
-        ).toFixed(2);
-        $(".r0").text("估计R0:" + r0);
-      });
-
       //去重函数
       function unique(arr) {
         return Array.from(new Set(arr));
@@ -285,13 +249,16 @@ export default {
         title: [
           {
             text: "新冠肺炎患者数：0",
-            subtext: "你还有" + xiadu + "个传播源（点击目标使其成为传播源）"
+            textStyle: {
+              fontSize: 25
+            },
+            top:'60px',
           },
           {
             text:
-              "说明:模拟肺炎传播\n每个点表示一个人群\n点之间的连线代表人群之间的联系\n\n参数：\n传染性：每天交流传染新冠肺炎的概率\n潜伏期天数：潜伏期内会传染，潜伏期结束后\n隔离治疗，并判断治愈还是死亡\n如何控制传播？\n1.减少人与人的接触（图的边密度减少）\n2.戴口罩降低传染性（有交流就传染的概率降低）\n3.早发现早隔离避免潜伏期内传播（潜伏期天数减少）\n\n实现群体免疫：\n在传播到后期大部分人都治愈时（有抗体）再使其成为传播源\n虽然传染性强但也传播不开了",
+              "说明:模拟新冠肺炎传播\n每个点表示一个人\n点之间的连线代表人与人之间的联系\n\n参数：\n传染性：每天新冠肺炎传染的概率\n潜伏期天数：潜伏期内会传染，潜伏期结束后\n隔离治疗，最后被治愈或死亡\n如何控制传播？\n1.减少人与人的接触（图的边密度减少）\n2.戴口罩降低传染性（有交流就传染的概率降低）\n3.早发现早隔离避免潜伏期内传播（潜伏期天数减少）\n\n实现群体免疫：\n在后期大部分人都治愈时（有抗体）",
             textStyle: {
-              fontSize: 12
+              fontSize: 15
             },
             top: "bottom",
             left: "left"
@@ -344,8 +311,8 @@ export default {
               "新冠肺炎死亡数"
             ],
 
-            x: "70%",
-            y: "0%"
+            x: "80%",
+            y: "30%"
           }
         ],
 
@@ -440,8 +407,6 @@ export default {
       var score = 0;
       var gameend = 0;
       $(".chuan").click(function() {
-        //计算分数
-        score += parseInt(infectivity * 100);
         //找到红的点
         var virusitem = [];
         for (var eachnodeinfo in nodes) {
@@ -514,7 +479,10 @@ export default {
         }
         t += 1;
         viruscounts.push([t, virusitem.length]);
-        viruscounts_new.push([t, virusitem.length - viruscount]);
+        if(virusitem.length - viruscount>0)
+          viruscounts_new.push([t, virusitem.length - viruscount]);
+        else
+          viruscounts_new.push([t, 0]);
         cures.push([t, cure]);
         dies.push([t, die]);
 
@@ -522,7 +490,7 @@ export default {
           title: [
             {
               text: "新冠肺炎患者数：" + virusitem.length,
-              subtext: "你还有" + xiadu + "个传播源（点击目标使其成为传播源）"
+              
             }
           ],
           xAxis: [
@@ -551,24 +519,15 @@ export default {
         myChart.setOption(optionchange);
 
         //病毒数
-        //判断游戏结束
-        //计算分数
+        //判断模拟结束
 
-        if ((viruscount == 0) & (xiadu == 0) & (gameend == 0)) {
-          alert(
-            "游戏结束，你的得分是：" +
-              ((score * density * 1000) / t / (cure + die)).toFixed(2) +
-              "分"
-          );
-          gameend = 1;
-        }
         viruscount = virusitem.length;
       });
 
       myChart.on("click", function(p) {
         if (p.dataType === "node") {
-          if (xiadu > 0) {
-            xiadu -= 1;
+          if (source > 0) {
+            source -= 1;
             // 找到红的点
             var virusitem = [];
             for (eachnodeinfo in nodes) {
@@ -601,8 +560,6 @@ export default {
               title: [
                 {
                   text: "新冠肺炎患者数：" + virusitem.length,
-                  subtext:
-                    "你还有" + xiadu + "个传播源（点击目标使其成为传播源）"
                 }
               ],
               xAxis: [
