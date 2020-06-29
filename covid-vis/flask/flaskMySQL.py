@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request, jsonify, redirect, url_for
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Text
 from flask_cors import CORS
@@ -21,33 +21,33 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:fengyunjia@127.0.0.1:3306/
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1:3306/cov19'  # mysql://username:password@hostname/database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-app.secret_key = 'root' #加密混淆使用
+app.secret_key = 'root' # 加密混淆使用
 CORS(app)
 
 
 def read_rumor(rumorFile, title, body, summary, time):
-  with open(rumorFile, 'r', encoding='UTF-8') as f:
-    reader = csv.reader(f)
-    for row in reader:
-      title.append(row[2])
-      summary.append(row[3])
-      body.append(row[5])
-      time.append(row[8])
-    title.pop(0)
-    summary.pop(0)
-    body.pop(0)
-    time.pop(0)
+    with open(rumorFile, 'r', encoding='UTF-8') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            title.append(row[2])
+            summary.append(row[3])
+            body.append(row[5])
+            time.append(row[8])
+        title.pop(0)
+        summary.pop(0)
+        body.pop(0)
+        time.pop(0)
 
 
 def read_news(newsFile, title, source, summary,url, time):
-  with open(newsFile,'r', encoding='UTF-8') as f:
-    reader = csv.reader(f)
+    with open(newsFile,'r', encoding='UTF-8') as f:
+        reader = csv.reader(f)
     for row in reader:
-      time.append(row[2])
-      title.append(row[3])
-      summary.append(row[4])
-      source.append(row[5])
-      url.append(row[6])
+        time.append(row[2])
+        title.append(row[3])
+        summary.append(row[4])
+        source.append(row[5])
+        url.append(row[6])
     title.pop(0)
     summary.pop(0)
     source.pop(0)
@@ -55,57 +55,55 @@ def read_news(newsFile, title, source, summary,url, time):
 
 
 class Rumors(db.Model):
-  # 定义表名
-  __tablename__ = 'rumors'
-  # 定义字段
-  # db.Column表示是一个字段
-  id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # id为主键
-  title = db.Column(Text)
-  summary = db.Column(Text)
-  body = db.Column(Text)
-  time = db.Column(Text)
+    # 定义表名
+    __tablename__ = 'rumors'
+    # 定义字段
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(Text)
+    summary = db.Column(Text)
+    body = db.Column(Text)
+    time = db.Column(Text)
 
-  # repr()方法显示一个可读字符串
-  def __repr__(self):
-    return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.body, self.time)
+    def __repr__(self):
+        return '<Rumors: %s %s %s %s>' % (self.title, self.summary, self.body, self.time)
 
-  def to_json(self):
-    json_data = {
-      'id': self.id,
-      'title': self.title,
-      'summary': self.summary,
-      'body': self.body,
-      'time': self.time
-    }
-    return json.dumps(json_data, ensure_ascii=False)
+    def to_json(self):
+        json_data = {
+          'id': self.id,
+          'title': self.title,
+          'summary': self.summary,
+          'body': self.body,
+          'time': self.time
+        }
+        return json.dumps(json_data, ensure_ascii=False)
 
 class News(db.Model):
 
-  __tablename__ = 'news'
-  id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-  title = db.Column(Text)
-  summary = db.Column(Text)
-  source = db.Column(Text)
-  time = db.Column(Text)
-  url = db.Column(Text)
+    __tablename__ = 'news'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(Text)
+    summary = db.Column(Text)
+    source = db.Column(Text)
+    time = db.Column(Text)
+    url = db.Column(Text)
 
-  def __repr__(self):
-    return '<News: %s %s %s %s %s>' % (self.title, self.summary, self.source, self.time, self.url)
+    def __repr__(self):
+        return '<News: %s %s %s %s %s>' % (self.title, self.summary, self.source, self.time, self.url)
 
-  def to_json(self):
-    json_data = {
-      'id': self.id,
-      'title': self.title,
-      'summary': self.summary,
-      'source': self.source,
-      'url': self.url,
-      'time': self.time
-    }
-    return json.dumps(json_data, ensure_ascii=False)
+    def to_json(self):
+        json_data = {
+          'id': self.id,
+          'title': self.title,
+          'summary': self.summary,
+          'source': self.source,
+          'url': self.url,
+          'time': self.time
+        }
+        return json.dumps(json_data, ensure_ascii=False)
 
 
-@app.route('/rumors_search', methods=['GET', 'POST']) #注：参数默认类型为字符串，unicode， 此处的“int:”为限定参数类型 作为路由优化 也可为float等
-def get_rumor(): #此次参数是为了方便后面return中再次使用
+@app.route('/rumors_search', methods=['GET', 'POST'])
+def get_rumor():
     if request.method == 'POST':
       q = request.get_json()['title']
       # print(q)
@@ -162,17 +160,17 @@ def sql_initialize():
     url = []
     read_news(newsFile, title, source, summary, url, time)
     for i in range(len(title)):
-      item = News(title=title[i], summary=summary[i], source=source[i], url=url[i], time=time[i])
-      db.session.add(item)
+        item = News(title=title[i], summary=summary[i], source=source[i], url=url[i], time=time[i])
+        db.session.add(item)
     db.session.commit()
     body = []
     time = []
     title = []
     summary = []
-    read_rumor(rumorFile, title, body,summary, time)
+    read_rumor(rumorFile, title, body, summary, time)
     for i in range(len(title)):
-      item = Rumors(title=title[i], summary=summary[i], body=body[i], time=time[i])
-      db.session.add(item)
+        item = Rumors(title=title[i], summary=summary[i], body=body[i], time=time[i])
+        db.session.add(item)
     db.session.commit()
 
 
@@ -184,5 +182,4 @@ if __name__ == '__main__':
     # db.create_all()
     # sql_initialize()
 
-    #执行了app.run(),就会将flask程序运行在一个简易的服务器（Flask 提供，用于测试）
     app.run(debug=True)

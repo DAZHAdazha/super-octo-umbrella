@@ -26,7 +26,7 @@
               <router-link to="/popular">疫情知识</router-link>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">新冠防范</a>
+              <router-link to="/defend">新冠防范</router-link>
             </a-menu-item>
           </a-menu>
         </a-dropdown>

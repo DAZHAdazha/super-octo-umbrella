@@ -5,8 +5,9 @@ import Home from '@/pages/home/home'
 import main_page from '@/pages/main_page/main_page'
 import news from '@/pages/news/news'
 import popular from '@/pages/popular/popular'
+import defend from '@/pages/Defend/defend'
 import dataV from '@jiaminghi/data-view'
-// import transmit from '@/pages/transmit/transmit.vue'
+import transmit from '@/pages/transmit/transmit.vue'
 
 Vue.use(dataV)
 Vue.use(Router)
@@ -32,11 +33,16 @@ export default new Router({
       path: '/popular',
       name: 'popular',
       component: popular
+    },
+    {
+      path: '/defend',
+      name: 'defend',
+      component: defend
+    },
+    {
+      path: '/transmit',
+      name: 'transmit',
+      component: transmit
     }
-    // {
-    //   path: '/transmit',
-    //   name: 'transmit',
-    //   component: transmit
-    // }
   ]
 })

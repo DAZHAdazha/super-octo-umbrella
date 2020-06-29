@@ -11,21 +11,7 @@
           <!-- 疫情排名 -->
           <div class="chart-container">
             <rose-chart :china="china" :world="world" :jwsr="jwsr"></rose-chart>
-            <!-- <rose-circle :jwsr="jwsr"></rose-circle> -->
-
-            <!-- <button
-              @click="switchChart"
-              style="width: 200px;
-                     color: black"
-            >
-              {{butText}}
-            </button>
-            <line-chart :history="history" v-show="chartShow"></line-chart>
-            <world-line :worldHistory="worldHistory" v-show="!chartShow"></world-line> -->
-
           </div>
-          <!-- 地图模块 -->
-          <!-- <water-level-chart /> -->
           <scroll-board />
         </div>
       </div>
@@ -36,12 +22,9 @@
 <script>
 import axios from 'axios'
 import topHeader from '../components/topHeader'
-// import digitalFlop from './datav/digitalFlop'
 import rankingBoard from './datav/rankingBoard'
 import roseChart from './datav/roseChart'
-// import waterLevelChart from './datav/waterLevelChart'
 import scrollBoard from './datav/scrollBoard'
-// import cards from './datav/cards'
 import roseCircle from './datav/roseCircle'
 import lineChart from './datav/lineChart'
 import worldLine from './datav/worldLine'
@@ -66,16 +49,10 @@ export default {
       world: [], // 世界地图数据
       jwsr: [], // 中国境外新增数据
       history: [], // 中国历史数据
-      worldHistory: [], // 世界历史数据
-      chartShow: true,
-      butText: '切换为世界疫情历史'
+      worldHistory: [] // 世界历史数据
     }
   },
   methods: {
-    switchChart () {
-      this.chartShow = !this.chartShow
-      this.butText = this.chartShow ? '切换为世界疫情历史' : '切换为中国疫情历史'
-    },
     getData () {
       axios.get('/api').then(response => {
         this.china = response.data.data.list

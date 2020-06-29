@@ -36,10 +36,9 @@ export default {
           left: 'center',
           top: 20,
           textStyle: {
-            color: '#ccc'
+            color: 'white'
           }
         },
-
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -57,7 +56,7 @@ export default {
           {
             name: '访问来源',
             type: 'pie',
-            radius: '55%',
+            radius: '45%',
             center: ['50%', '50%'],
             data: [
             ].sort(function (a, b) {
@@ -111,7 +110,7 @@ export default {
 
 #roseCircle{
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 
 .item{

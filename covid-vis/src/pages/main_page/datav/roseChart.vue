@@ -32,6 +32,14 @@ export default {
     return {
       otherlist: [],
       chinaOption: {
+        title: {
+          text: '中国疫情今日新增分布图',
+          top: 20,
+          left: 20,
+          textStyle: {
+            color: 'white'
+          }
+        },
         tooltip: {
           triggerOn: 'click',
           formatter: function (e, t, n) {
@@ -56,11 +64,11 @@ export default {
         geo: {
           map: 'china',
           roam: !1,
+          zoom: 0.8,
           scaleLimit: {
-            min: 1,
+            min: 0.8,
             max: 2
           },
-          left: 100,
           // top: 20,
           label: {
             normal: {
@@ -97,6 +105,14 @@ export default {
       },
 
       worldOption: {
+        title: {
+          text: '世界累计感染者分布图',
+          top: 20,
+          left: 20,
+          textStyle: {
+            color: 'white'
+          }
+        },
         tooltip: {
           triggerOn: 'click',
           formatter: function (e, t, n) {
@@ -342,7 +358,6 @@ export default {
             min: 1,
             max: 2
           },
-          left: 150,
           zoom: 1.22,
           label: {
             normal: {
@@ -416,7 +431,7 @@ export default {
 
   #china-map{
     width: 60%;
-    height: 200px;
+    height: 300px;
   }
 
   .roseCircle{
@@ -426,7 +441,9 @@ export default {
 
   #world-map{
     width: 100%;
-    height: 200px;
+    height: 400px;
+    position: relative;
+    top: 50px
   }
 
   .rose-chart-title {
