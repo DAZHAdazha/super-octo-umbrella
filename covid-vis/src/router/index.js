@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from '@/pages/home/home'
 import main_page from '@/pages/main_page/main_page'
 import news from '@/pages/news/news'
+import popular from '@/pages/popular/popular'
 import dataV from '@jiaminghi/data-view'
 // import transmit from '@/pages/transmit/transmit.vue'
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/news',
       name: 'news',
       component: news
+    },
+    {
+      path: '/popular',
+      name: 'popular',
+      component: popular
     }
     // {
     //   path: '/transmit',

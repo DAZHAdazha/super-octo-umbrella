@@ -23,7 +23,7 @@
               <router-link to="/news">疫情新闻</router-link>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">疫情知识</a>
+              <router-link to="/popular">疫情知识</router-link>
             </a-menu-item>
             <a-menu-item>
               <a href="javascript:;">新冠防范</a>
