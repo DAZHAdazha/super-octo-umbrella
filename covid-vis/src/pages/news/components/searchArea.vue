@@ -38,7 +38,7 @@ export default {
     onSearch(value) {
       var that = this;
       axios
-        .post("/rumors_search", {
+        .post("/news_search", {
           title: value
         })
         .then(function(response){

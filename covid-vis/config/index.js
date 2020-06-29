@@ -53,6 +53,13 @@ module.exports = {
           '^/rumors_search': ''//后面可以使重写的新路径，一般不做更改
         }
       },
+      '/news_search':{
+        target:'http://127.0.0.1:5000/news_search',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/news_search': ''//后面可以使重写的新路径，一般不做更改
+        }
+      }
     },
 
     // Various Dev Server settings

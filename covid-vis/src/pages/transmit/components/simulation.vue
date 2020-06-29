@@ -7,10 +7,11 @@
 </template>
 
 <script>
-import echarts from "echarts";
-import $ from "jquery";
+import echarts from "echarts"
+import $ from "jquery"
 export default {
   name: "simulation",
+//   注意mounted应该放到最前面，且这个模块必须写成组件
   mounted() {
     this.chart();
   },
@@ -44,8 +45,8 @@ export default {
 
       $(".input-item").css({
         position: "absolute",
-        top: "250px",
-        left: "10px",
+        top: "400px",
+        left: "0px",
         display: "-ms-flexbox",
         display: "flex",
         "-ms-flex-wrap": "wrap",
@@ -75,7 +76,7 @@ export default {
       });
       $(".slider").css({
         position: "absolute",
-        top: "130px",
+        top: "110px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -88,7 +89,7 @@ export default {
       });
       $(".text").css({
         position: "absolute",
-        top: "130px",
+        top: "110px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -101,7 +102,7 @@ export default {
       });
       $(".slidercure").css({
         position: "absolute",
-        top: "170px",
+        top: "150px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -114,7 +115,7 @@ export default {
       });
       $(".textcure").css({
         position: "absolute",
-        top: "170px",
+        top: "150px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -127,7 +128,7 @@ export default {
       });
       $(".sliderdie").css({
         position: "absolute",
-        top: "210px",
+        top: "190px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -140,7 +141,7 @@ export default {
       });
       $(".textdie").css({
         position: "absolute",
-        top: "210px",
+        top: "190px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",

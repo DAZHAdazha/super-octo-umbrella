@@ -112,7 +112,7 @@ def get_rumor():
       # print(rumor.all())
       for i in rumor.all():
         dict.append(i.to_json())
-      print(json.dumps(dict))
+      # print(json.dumps(dict))
     return json.dumps(dict)
 
 
@@ -147,7 +147,7 @@ def get_news():
       # print(q)
       dict = []
       news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q), News.time.contains(q)))
-      print(news.all())
+      # print(news.all())
       for i in news.all():
         dict.append(i.to_json())
     return json.dumps(dict)
