@@ -42,7 +42,7 @@ export default {
           title: value
         })
         .then(function(response){
-            console.log(response.data);
+            // console.log(response.data);
             if(response.data.length!=0){
               that.data.length = 0;
               for (var i = 0; i < response.data.length; i++) {
@@ -73,7 +73,7 @@ export default {
         })
         .then(res => {
           var news = res.data.newslist[0].news;
-          console.log(news);
+          // console.log(news);
           for (var i = 0; i < news.length - 1; i++) {
             this.data.push({
               title: news[i].title,
@@ -81,7 +81,7 @@ export default {
               linkage: news[i].sourceUrl
             });
           }
-          console.log(news[0]);
+          // console.log(news[0]);
         })
         .catch(err => {
           console.log("Newsfail");
