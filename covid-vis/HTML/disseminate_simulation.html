@@ -19,7 +19,7 @@
         //人群数量
         var nodesnum = 360
         //新冠肺炎传播源数量
-        var xiadu = 1
+        var source = 1
         //新冠肺炎的传染性，接触就传染的概率
         var infectivity = 0.2
         //治疗天数
@@ -271,7 +271,7 @@
         option = {
             title: [{
                 text: '新冠肺炎患者数：0',
-                subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
+                subtext: '你还有' + source + '个传播源（点击目标使其成为传播源）'
             }, {
                 text: '说明:模拟肺炎传播\n每个点表示一个人群\n点之间的连线代表人群之间的联系\n\n参数：\n传染性：每天交流传染新冠肺炎的概率\n潜伏期天数：潜伏期内会传染，潜伏期结束后\n隔离治疗，并判断治愈还是死亡\n如何控制传播？\n1.减少人与人的接触（图的边密度减少）\n2.戴口罩降低传染性（有交流就传染的概率降低）\n3.早发现早隔离避免潜伏期内传播（潜伏期天数减少）\n\n实现群体免疫：\n在传播到后期大部分人都治愈时（有抗体）再使其成为传播源\n虽然传染性强但也传播不开了',
                 textStyle: {
@@ -487,7 +487,7 @@
             optionchange = {
                 title: [{
                     text: '新冠肺炎患者数：' + virusitem.length,
-                    subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
+                    subtext: '你还有' + source + '个传播源（点击目标使其成为传播源）'
                 }],
                 xAxis: [{
                     max: 2 + t
@@ -510,7 +510,7 @@
             //判断游戏结束
             //计算分数
 
-            if (viruscount == 0 & xiadu == 0 & gameend == 0) {
+            if (viruscount == 0 & source == 0 & gameend == 0) {
                 alert('游戏结束，你的得分是：' + ((score * density * 1000 / t) / (cure + die)).toFixed(2) + '分')
                 gameend = 1
             }
@@ -522,8 +522,8 @@
 
         myChart.on('click', function (p) {
             if (p.dataType == 'node') {
-                if (xiadu > 0) {
-                    xiadu -= 1
+                if (source > 0) {
+                    source -= 1
 
                     //找到红的点
                     var virusitem = []
@@ -558,7 +558,7 @@
                     optionchange = {
                         title: [{
                             text: '新冠肺炎患者数：' + virusitem.length,
-                            subtext: '你还有' + xiadu + '个传播源（点击目标使其成为传播源）'
+                            subtext: '你还有' + source + '个传播源（点击目标使其成为传播源）'
                         }],
                         xAxis: [{
                             max: 2 + t

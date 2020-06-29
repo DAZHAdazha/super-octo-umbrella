@@ -1,32 +1,35 @@
 <template>
-  <div id="top-header">
-    <dv-border-box-4 style="width:300px;height:90px;">
-      <div class="infected" v-if="comming">全球感染人数:{{globalnumber}}</div>
-      <div class="add" v-if="comming">昨日新增感染人数:{{globaladdnumber}}</div>
+  <div id='top-header'>
+    <dv-border-box-4 style='width:300px;height:90px;'>
+      <div class='infected' v-if='comming'>全球感染人数:{{globalnumber}}</div>
+      <div class='add' v-if='comming'>昨日新增感染人数:{{globaladdnumber}}</div>
     </dv-border-box-4>
-    <!-- <dv-decoration-8 style="width:300px;height:50px;" /> -->
-    <dv-decoration-5 class="header-center-decoration" />
-    <div class="center-title">实时疫情数据</div>
-    <dv-border-box-4 style="width:300px;height:90px;" :reverse="true">
-      <div class="infected" v-if="comming">国内感染人数:{{domesticnumber}}</div>
-      <div class="add" v-if="comming">昨日新增感染人数:{{domesticaddnumber}}</div>
-      <div class="menu">
+    <!-- <dv-decoration-8 style='width:300px;height:50px;' /> -->
+    <dv-decoration-5 class='header-center-decoration' />
+    <div class='center-title'>实时疫情数据</div>
+    <dv-border-box-4 style='width:300px;height:90px;' :reverse='true'>
+      <div class='infected' v-if='comming'>国内感染人数:{{domesticnumber}}</div>
+      <div class='add' v-if='comming'>昨日新增感染人数:{{domesticaddnumber}}</div>
+      <div class='menu'>
         <a-dropdown :overlayStyle="{color: '#08c'}">
-          <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-            <a-icon type="menu" :style="{ fontSize: '25px', color: '#08c' }" />
+          <a class='ant-dropdown-link' @click='e => e.preventDefault()'>
+            <a-icon type='menu' :style="{ fontSize: '30px', color: '#08c' }" />
           </a>
-          <a-menu slot="overlay">
+          <a-menu slot='overlay'>
             <a-menu-item>
-              <router-link to="/main">实时数据</router-link>
+              <router-link to='/main'>实时数据</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to="/news">疫情新闻</router-link>
+              <router-link to='/news'>疫情新闻</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to="/popular">疫情知识</router-link>
+              <router-link to='/popular'>疫情知识</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to="/defend">新冠防范</router-link>
+              <router-link to='/transmit'>传播模拟</router-link>
+            </a-menu-item>
+            <a-menu-item>
+              <router-link to='/defend'>新冠防范</router-link>
             </a-menu-item>
           </a-menu>
         </a-dropdown>
@@ -36,39 +39,39 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "TopHeader",
-  data() {
+  name: 'TopHeader',
+  data () {
     return {
       comming: false
-    };
+    }
   },
-  mounted() {
-    this.getNews();
+  mounted () {
+    this.getNews()
   },
   methods: {
-    getNews() {
+    getNews () {
       axios
-        .get("/api")
+        .get('/api')
         .then(res => {
           // console.log(res);
-          var response = res.data.data;
-          this.comming = true;
-          this.domesticnumber = response.gntotal;
-          this.domesticaddnumber = response.add_daily.addcon_new;
-          this.globalnumber = response.othertotal.certain;
-          this.globaladdnumber = response.othertotal.certain_inc;
+          var response = res.data.data
+          this.comming = true
+          this.domesticnumber = response.gntotal
+          this.domesticaddnumber = response.add_daily.addcon_new
+          this.globalnumber = response.othertotal.certain
+          this.globaladdnumber = response.othertotal.certain_inc
         })
         .catch(err => {
-          console.log("fail");
-        });
+          console.log(err)
+        })
     }
   }
-};
+}
 </script>
 
-<style lang="less">
+<style lang='less'>
 #top-header {
   position: relative;
   width: 100%;
