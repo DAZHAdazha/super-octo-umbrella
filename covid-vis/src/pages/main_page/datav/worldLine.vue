@@ -17,7 +17,10 @@ export default {
       worldOption: {
         color: ['#DC143C', '#40E0D0', '#808080'],
         title: {
-          text: '世界疫情历史折线图'
+          text: '世界疫情历史折线图',
+          textStyle: {
+            color: 'white'
+          }
         },
         tooltip: {
           trigger: 'axis'
@@ -31,7 +34,11 @@ export default {
           }
         ],
         legend: {
-          data: ['全球感染人数', '全球治愈人数', '全球死亡人数']
+          data: ['全球感染人数', '全球治愈人数', '全球死亡人数'],
+          top: 30,
+          textStyle: {
+            color: 'white'
+          }
         },
         grid: {
           left: '3%',
@@ -42,10 +49,20 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: []
+          data: [],
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          }
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          }
         },
         series: [
           {
@@ -90,6 +107,7 @@ export default {
 
 <style scoped>
 #worldLineChart {
-  height: 100px;
+  width: 600px;
+  height: 400px;
 }
 </style>

@@ -1,25 +1,32 @@
 <template>
-  <div id="rose-chart">
-    <div id="china-map"></div>
+  <div>
+    <div id="rose-chart">
+      <div id="china-map"></div>
+      <rose-circle class="roseCircle" :jwsr="jwsr"></rose-circle>
+      <!-- <div class="rose-chart-title">累计计量资金分布</div>
+      <dv-charts :option="option" /> -->
+    </div>
     <div id="world-map"></div>
-    <!-- <div class="rose-chart-title">累计计量资金分布</div>
-    <dv-charts :option="option" /> -->
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import echarts from 'echarts'
 import china from 'echarts/map/json/china.json'
 import world from 'echarts/map/json/world.json'
+import roseCircle from './roseCircle'
 echarts.registerMap('china', china) // 注册对应的地图;
 echarts.registerMap('world', world)
 
 export default {
   name: 'RoseChart',
+  components: {
+    roseCircle
+  },
   props: {
     china: Array,
-    world: Array
+    world: Array,
+    jwsr: Array
   },
   data () {
     return {
@@ -53,8 +60,8 @@ export default {
             min: 1,
             max: 2
           },
-          zoom: 1.2,
-          top: 20,
+          left: 100,
+          // top: 20,
           label: {
             normal: {
               show: false,
@@ -107,7 +114,6 @@ export default {
           text: ['高', '低'],
           textStyle: { color: '#eeeeee' },
           inRange: {
-            // color: ['#800000', '#A52A2A', '#CD5C5C', '#F08080', '#D2691E', '#FF8C00', '#fdae61', '#FFA500', '#FFE4B5', '#FFFAF0']
             color: ['#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
           },
           show: !0
@@ -336,8 +342,8 @@ export default {
             min: 1,
             max: 2
           },
+          left: 150,
           zoom: 1.22,
-          top: 100,
           label: {
             normal: {
               show: false,
@@ -400,19 +406,26 @@ export default {
 </script>
 
 <style lang="less">
-// #rose-chart {
-  // width: 50%;
-  // height: 1300px;
-  // background-color: rgba(6, 30, 93, 0.5);
-  // border-top: 2px solid rgba(1, 153, 209, .5);
-  // box-sizing: border-box;
+
+  #rose-chart{
+    height: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+  }
 
   #china-map{
-    // width: 100px;
-    height: 100px;
+    width: 60%;
+    height: 200px;
+  }
+
+  .roseCircle{
+    width: 40%;
+    height: 220px;
   }
 
   #world-map{
+    width: 100%;
     height: 200px;
   }
 

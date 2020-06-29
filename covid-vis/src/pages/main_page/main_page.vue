@@ -7,13 +7,20 @@
         <!-- <digital-flop /> -->
 
         <div class='block-left-right-content'>
-          <ranking-board />
+          <ranking-board/>
           <!-- 疫情排名 -->
           <div class="chart-container">
-            <!-- <rose-chart :china="china" :world="world"></rose-chart> -->
-            <rose-circle :jwsr="jwsr"></rose-circle>
-            <line-chart :history="history"></line-chart>
-            <world-line :worldHistory="worldHistory"></world-line>
+            <rose-chart :china="china" :world="world" :jwsr="jwsr"></rose-chart>
+            <!-- <rose-circle :jwsr="jwsr"></rose-circle> -->
+            <button
+              @click="switchChart"
+              style="width: 200px;
+                     color: black"
+            >
+              {{butText}}
+            </button>
+            <line-chart :history="history" v-show="chartShow"></line-chart>
+            <world-line :worldHistory="worldHistory" v-show="!chartShow"></world-line>
           </div>
           <!-- 地图模块 -->
           <!-- <water-level-chart /> -->
@@ -57,10 +64,16 @@ export default {
       world: [], // 世界地图数据
       jwsr: [], // 中国境外新增数据
       history: [], // 中国历史数据
-      worldHistory: [] // 世界历史数据
+      worldHistory: [], // 世界历史数据
+      chartShow: true,
+      butText: '切换为世界疫情历史'
     }
   },
   methods: {
+    switchChart () {
+      this.chartShow = !this.chartShow
+      this.butText = this.chartShow ? '切换为世界疫情历史' : '切换为中国疫情历史'
+    },
     getData () {
       axios.get('/api').then(response => {
         this.china = response.data.data.list
@@ -106,7 +119,7 @@ export default {
   }
 
   .chart-container {
-    width: 50%;
+    width: 600px;
     display: flex;
     flex-direction: column;
     background-color: rgba(6, 30, 93, 0.5);

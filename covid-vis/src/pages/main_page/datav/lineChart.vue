@@ -17,7 +17,10 @@ export default {
       option: {
         color: ['#DC143C', '#40E0D0', '#808080'],
         title: {
-          text: '全国疫情历史折线图'
+          text: '全国疫情历史折线图',
+          textStyle: {
+            color: 'white'
+          }
         },
         tooltip: {
           trigger: 'axis',
@@ -34,7 +37,11 @@ export default {
           }
         ],
         legend: {
-          data: ['全国感染人数', '全国治愈人数', '全国死亡人数']
+          data: ['全国感染人数', '全国治愈人数', '全国死亡人数'],
+          top: 30,
+          textStyle: {
+            color: 'white'
+          }
         },
         grid: {
           left: '3%',
@@ -45,10 +52,20 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: []
+          data: [],
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          }
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          }
         },
         series: [
           {
@@ -56,7 +73,6 @@ export default {
             type: 'line',
             data: [],
             areaStyle: {
-              // color: 'red'
             }
           },
           {
@@ -98,6 +114,7 @@ export default {
 
 <style scoped>
 #lineChart {
-  height: 100px;
+  width: 600px;
+  height: 400px;
 }
 </style>

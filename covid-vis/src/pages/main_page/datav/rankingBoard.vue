@@ -1,7 +1,7 @@
 <template>
   <div id="ranking-board">
     <div class="ranking-board-title">感染人数排名</div>
-    <dv-scroll-ranking-board :config="config" v-if="completed" />
+    <dv-scroll-ranking-board :config="config" v-if="completed"/>
     <dv-loading v-if="loading">Loading...</dv-loading>
   </div>
 </template>
@@ -9,39 +9,39 @@
 <script>
 import axios from 'axios'
 export default {
-  name: "RankingBoard",
-  data() {
+  name: 'RankingBoard',
+  data () {
     return {
       config: {
         data: [],
         rowNum: 10
       },
-      completed:false,
-      loading:true
-    };
+      completed: false,
+      loading: true
+    }
   },
-  mounted() {
-    this.getNews();
+  mounted () {
+    this.getNews()
   },
   methods: {
-    getNews() {
+    getNews () {
       axios
-        .get("/globalrank")
+        .get('/globalrank')
         .then(res => {
           // console.log(res);
-          var response = res.data;
+          var response = res.data
           // console.log(response);
-          for(var i=0;i<response.length;i++){
+          for (var i = 0; i < response.length; i++) {
             this.config.data.push({name:response[i].country,value:response[i].cases})
           }
-          console.log(this.config.data);
-          this.loading = false;
-          this.completed = true;
-          this.config = { ...this.config };
+          console.log(this.config)
+          this.loading = false
+          this.completed = true
+          this.config = { ...this.config }
         })
         .catch(err => {
-          console.log("fail");
-        });
+          console.log('fail')
+        })
     }
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div id='roseCircle' style='width: 100px;height:100px;'></div>
+    <div id='roseCircle'></div>
     <div class="item-container">
       <!-- <div class="item" v-for="(item,index) in jwsr" :key="index">{{item.name}} : {{item.jwsrNum}}</div> -->
     </div>
@@ -67,14 +67,14 @@ export default {
             label: {
               normal: {
                 textStyle: {
-                  color: 'black'
+                  color: 'white'
                 }
               }
             },
             labelLine: {
               normal: {
                 lineStyle: {
-                  color: 'black'
+                  color: 'white'
                 },
                 smooth: 0.2,
                 length: 10,
@@ -98,8 +98,7 @@ export default {
 
 <style scoped>
 .container{
-  width: 100px;
-  height: 100px;
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-around
@@ -108,6 +107,11 @@ export default {
 .item-container{
   position: relative;
   top: 100px;
+}
+
+#roseCircle{
+  width: 100%;
+  height: 200px;
 }
 
 .item{
