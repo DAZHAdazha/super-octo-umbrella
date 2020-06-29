@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/pages/home/home'
-import main_page from '@/pages/main_page/main_page'
+import mainPage from '@/pages/main_page/main_page'
 import news from '@/pages/news/news'
 import popular from '@/pages/popular/popular'
 import defend from '@/pages/Defend/defend'
@@ -16,13 +15,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Main',
+      redirect: '/main',
+      component: mainPage
     },
     {
       path: '/main',
       name: 'main_page',
-      component: main_page
+      component: mainPage
     },
     {
       path: '/news',
