@@ -26,7 +26,7 @@
               <a href="javascript:;">疫情知识</a>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">新冠防范</a>
+              <router-link to="/defend">新冠防范</router-link>
             </a-menu-item>
           </a-menu>
         </a-dropdown>

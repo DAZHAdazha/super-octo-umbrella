@@ -7,6 +7,7 @@ import echarts from 'echarts'
 import vueResource from 'vue-resource'
 import ant from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.less'
+import 'jquery'
 
 Vue.use(ant)
 Vue.use(vueResource)
