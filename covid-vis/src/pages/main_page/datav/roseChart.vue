@@ -3,7 +3,6 @@
     <div id="rose-chart">
       <div id="china-map"></div>
       <rose-circle class="roseCircle" :jwsr="jwsr"></rose-circle>
-      <dv-charts :option="option" /> -->
     </div>
     <div id="world-map"></div>
   </div>
