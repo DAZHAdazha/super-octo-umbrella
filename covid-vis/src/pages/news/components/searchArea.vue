@@ -42,30 +42,23 @@ export default {
           title: value
         })
         .then(function(response){
-            that.data.length = 0;
-            for (var i = 0; i < response.data.length; i++) {
-              that.data.push({
-                title: JSON.parse(response.data[i]).title,
-                description: JSON.parse(response.data[i]).summary
-              });
+            console.log(response.data);
+            if(response.data.length!=0){
+              that.data.length = 0;
+              for (var i = 0; i < response.data.length; i++) {
+                that.data.push({
+                  title: JSON.parse(response.data[i]).title,
+                  description: JSON.parse(response.data[i]).summary,
+                  linkage: JSON.parse(response.data[i]).sourceUrl
+                });
+              }
+            }
+            else{
+              // 显示无搜索结果
+              console.log('no results');
             }
           }
         )
-        // .then(res => {
-        //   if (res) {
-        //     this.data.length = 0;
-        //     for (var i = 0; i < res.length - 1; i++) {
-        //       console.log('---------------');
-              
-        //       console.log(res[i].title);
-        //       console.log('---------------');
-        //       this.data.push({
-        //         title: res[i].title,
-        //         description: res[i].body
-        //       });
-        //     }
-        //   }
-        // })
         .catch(err => {
           console.log("GetRumorWrong!");
         });

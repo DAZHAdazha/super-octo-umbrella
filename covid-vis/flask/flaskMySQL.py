@@ -58,7 +58,7 @@ class Rumors(db.Model):
     # 定义表名
     __tablename__ = 'rumors'
     # 定义字段
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(Text)
     summary = db.Column(Text)
     body = db.Column(Text)
@@ -103,7 +103,7 @@ class News(db.Model):
 
 
 @app.route('/rumors_search', methods=['GET', 'POST'])
-def get_rumor(): 
+def get_rumor():
     if request.method == 'POST':
       q = request.get_json()['title']
       # print(q)
@@ -167,7 +167,7 @@ def sql_initialize():
     time = []
     title = []
     summary = []
-    read_rumor(rumorFile, title, body,summary, time)
+    read_rumor(rumorFile, title, body, summary, time)
     for i in range(len(title)):
         item = Rumors(title=title[i], summary=summary[i], body=body[i], time=time[i])
         db.session.add(item)
