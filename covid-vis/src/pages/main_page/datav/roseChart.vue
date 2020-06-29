@@ -3,7 +3,6 @@
     <div id="rose-chart">
       <div id="china-map"></div>
       <rose-circle class="roseCircle" :jwsr="jwsr"></rose-circle>
-      <!-- <div class="rose-chart-title">累计计量资金分布</div>
       <dv-charts :option="option" /> -->
     </div>
     <div id="world-map"></div>

@@ -13,7 +13,7 @@
       <div class="menu">
         <a-dropdown :overlayStyle="{color: '#08c'}">
           <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-            <a-icon type="menu" :style="{ fontSize: '25px', color: '#08c' }" />
+            <a-icon type="menu" :style="{ fontSize: '30px', color: '#08c' }" />
           </a>
           <a-menu slot="overlay">
             <a-menu-item>
@@ -23,7 +23,8 @@
               <router-link to="/news">疫情新闻</router-link>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">疫情知识</a>
+              <!-- <a href="javascript:;"></a> -->
+              <router-link to="/transmit">疫情知识</router-link>
             </a-menu-item>
             <a-menu-item>
               <router-link to="/defend">新冠防范</router-link>
