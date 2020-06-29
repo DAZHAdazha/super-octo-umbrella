@@ -44,7 +44,7 @@ export default {
 
       $(".input-item").css({
         position: "absolute",
-        top: "180px",
+        top: "250px",
         left: "10px",
         display: "-ms-flexbox",
         display: "flex",
@@ -75,7 +75,7 @@ export default {
       });
       $(".slider").css({
         position: "absolute",
-        top: "60px",
+        top: "130px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -88,7 +88,7 @@ export default {
       });
       $(".text").css({
         position: "absolute",
-        top: "60px",
+        top: "130px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -101,7 +101,7 @@ export default {
       });
       $(".slidercure").css({
         position: "absolute",
-        top: "100px",
+        top: "170px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -114,7 +114,7 @@ export default {
       });
       $(".textcure").css({
         position: "absolute",
-        top: "100px",
+        top: "170px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -127,7 +127,7 @@ export default {
       });
       $(".sliderdie").css({
         position: "absolute",
-        top: "140px",
+        top: "210px",
         left: "0.5rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -140,7 +140,7 @@ export default {
       });
       $(".textdie").css({
         position: "absolute",
-        top: "140px",
+        top: "210px",
         left: "7rem",
         display: "-ms-flexbox",
         display: "flex",
@@ -241,7 +241,7 @@ export default {
               fontSize: 25,
               color:'white'
             },
-            top:'10px',
+            top:'30px',
           },
           {
             text:
@@ -310,7 +310,7 @@ export default {
             data: ["感染者", "未感染", "治愈", "死亡"],
             orient: "vertical",
             x: "0%",
-            y: "220px",
+            y: "240px",
             textStyle: { 
                             color: 'white',
                             fontSize: 16

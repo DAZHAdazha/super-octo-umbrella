@@ -2,7 +2,7 @@
 
 <div id='data-view'>
     <dv-full-screen-container>
-
+    <topHeader></topHeader>
     <div class="leftContent">
 
           <simulation></simulation>
@@ -20,11 +20,12 @@
 <script>
 
 import simulation from "./components/simulation";
+import topHeader from '../components/topHeader';
 
 export default {
   name: "transmit",
   components: {
-
+    topHeader,
     simulation
   }
 };
