@@ -89,7 +89,7 @@ export default {
   },
   watch: {
     worldHistory (newData, oldData) {
-      console.log(newData)
+      // console.log(newData)
       this.worldHistory = newData
       this.worldHistory.forEach(element => {
         this.worldOption.xAxis.data.unshift(element.date)

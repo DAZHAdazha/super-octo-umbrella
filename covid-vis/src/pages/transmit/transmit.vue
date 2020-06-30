@@ -1,5 +1,4 @@
 <template>
-
 <div id='data-view'>
     <dv-full-screen-container>
     <topHeader></topHeader>
@@ -10,10 +9,8 @@
           <searchArea></searchArea>
         </div>
     </dv-full-screen-container>
-    
   </div>
 </template>
-
 <script>
 
 import simulation from './components/simulation'

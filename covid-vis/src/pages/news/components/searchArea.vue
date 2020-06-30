@@ -1,6 +1,6 @@
 <template>
   <div id="searchBox">
-    <a-input-search placeholder="搜索谣言" enter-button="Search" @search="onSearch" />
+    <a-input-search placeholder="搜索新闻" enter-button="Search" @search="onSearch" />
     <div></div>
     <a-list item-layout="horizontal" :data-source="data">
       <a-list-item slot="renderItem" slot-scope="item,index">
@@ -19,73 +19,70 @@
       </a-list-item>
     </a-list>
   </div>
-  
 </template>
-
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "searchArea",
-  data() {
+  name: 'searchArea',
+  data () {
     return {
       data: []
-    };
+    }
   },
-  mounted() {
-    this.getNews();
+  mounted () {
+    this.getNews()
   },
   methods: {
-    onSearch(value) {
-      var that = this;
+    onSearch (value) {
+      var that = this
       axios
-        .post("/news_search", {
+        .post('/news_search', {
           title: value
         })
-        .then(function(response){
-            // console.log(response.data);
-            if(response.data.length!=0){
-              that.data.length = 0;
-              for (var i = 0; i < response.data.length; i++) {
-                that.data.push({
-                  title: JSON.parse(response.data[i]).title,
-                  description: JSON.parse(response.data[i]).summary,
-                  linkage: JSON.parse(response.data[i]).sourceUrl
-                });
-              }
+        .then(function (response) {
+          // console.log(response.data);
+          if (response.data.length != 0) {
+            that.data.length = 0
+            for (var i = 0; i < response.data.length; i++) {
+              that.data.push({
+                title: JSON.parse(response.data[i]).title,
+                description: JSON.parse(response.data[i]).summary,
+                linkage: JSON.parse(response.data[i]).sourceUrl
+              })
             }
-            else{
-              // 显示无搜索结果
-              console.log('no results');
-            }
+          } else {
+            // 显示无搜索结果
+            alert('没有匹配的结果')
           }
+        }
         )
         .catch(err => {
           console.log("GetNewsWrong!");
         });
     },
-    getNews() {
+    getNews () {
       axios
-        .get("/news", {
+        .get('/news', {
           headers: {
-            authoration: "apicode",
-            apicode: "2e5cda5ad3e14374bf59db91c877c3d3"
+            authoration: 'apicode',
+            apicode: '2e5cda5ad3e14374bf59db91c877c3d3'
           }
         })
         .then(res => {
-          var news = res.data.newslist[0].news;
+          var news = res.data.newslist[0].news
           // console.log(news);
           for (var i = 0; i < news.length - 1; i++) {
             this.data.push({
               title: news[i].title,
               description: news[i].summary,
               linkage: news[i].sourceUrl
-            });
+            })
           }
           // console.log(news[0]);
         })
         .catch(err => {
-          console.log("Newsfail");
-        });
+          console.log("Newsfail")
+        })
     }
   }
 };
@@ -98,6 +95,5 @@ export default {
   box-shadow: 0 0 2px blue;
   margin-top: 20px;
 }
-
 
 </style>
