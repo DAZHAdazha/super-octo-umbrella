@@ -10,6 +10,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/news_search': {
+        target: 'http://127.0.0.1:5000/news_search',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/news_search': ''//后面可以使重写的新路径，一般不做更改
+        }
+      },
       // 对应的域名代理,通过这种方法来完成http跨域请求
       '/api': {
         target: 'https://interface.sina.cn/news/wap/fymap2020_data.d.json',
@@ -25,39 +32,32 @@ module.exports = {
           '^/news': ''//后面可以使重写的新路径，一般不做更改
         }
       },
-      '/globalrank':{
-        target:'https://corona.lmao.ninja/v2/countries?yesterday&sort=cases',
+      '/globalrank': {
+        target: 'https://corona.lmao.ninja/v2/countries?yesterday&sort=cases',
         changeOrigin: true,
         pathRewrite: {
           '^/globalrank': ''//后面可以使重写的新路径，一般不做更改
         }
       },
-      '/globaldata':{
-        target:'https://corona.lmao.ninja/v2/all?yesterday',
+      '/globaldata': {
+        target: 'https://corona.lmao.ninja/v2/all?yesterday',
         changeOrigin: true,
         pathRewrite: {
           '^/globaldata': ''//后面可以使重写的新路径，一般不做更改
         }
       },
-      '/baidu':{
-        target:'http://index.baidu.com/api/WordGraph/multi?wordlist%5B%5D=%E7%96%AB%E6%83%85',
+      '/baidu': {
+        target: 'http://index.baidu.com/api/WordGraph/multi?wordlist%5B%5D=%E7%96%AB%E6%83%85',
         changeOrigin: true,
         pathRewrite: {
           '^/baidu': ''//后面可以使重写的新路径，一般不做更改
         }
       },
-      '/rumors_search':{
-        target:'http://127.0.0.1:5000/rumors_search',
+      '/rumors_search': {
+        target: 'http://127.0.0.1:5000/rumors_search',
         changeOrigin: true,
         pathRewrite: {
           '^/rumors_search': ''//后面可以使重写的新路径，一般不做更改
-        }
-      },
-      '/news_search':{
-        target:'http://127.0.0.1:5000/news_search',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/news_search': ''//后面可以使重写的新路径，一般不做更改
         }
       }
     },

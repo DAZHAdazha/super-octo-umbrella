@@ -60,7 +60,7 @@ export default {
           }
         )
         .catch(err => {
-          console.log("GetRumorWrong!");
+          console.log("GetNewsWrong!");
         });
     },
     getNews() {
