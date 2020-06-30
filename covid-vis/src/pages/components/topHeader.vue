@@ -6,7 +6,7 @@
     </dv-border-box-4>
     <!-- <dv-decoration-8 style='width:300px;height:50px;' /> -->
     <dv-decoration-5 class='header-center-decoration' />
-    <div class='center-title'>实时疫情数据</div>
+    <div class='center-title'>疫情大数据平台</div>
     <dv-border-box-4 style='width:300px;height:90px;' :reverse='true'>
       <div class='infected' v-if='comming'>国内感染人数:{{domesticnumber}}</div>
       <div class='add' v-if='comming'>昨日新增感染人数:{{domesticaddnumber}}</div>
@@ -23,7 +23,7 @@
               <router-link to='/news'>疫情新闻</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to='/popular'>疫情知识</router-link>
+              <router-link to='/popular'>斗争新冠</router-link>
             </a-menu-item>
             <a-menu-item>
               <router-link to='/transmit'>传播模拟</router-link>
@@ -57,6 +57,7 @@ export default {
         .then(res => {
           // console.log(res);
           var response = res.data.data
+          console.log(response);
           this.comming = true
           this.domesticnumber = response.gntotal
           this.domesticaddnumber = response.add_daily.addcon_new
