@@ -20,13 +20,13 @@
               <router-link to='/main'>实时数据</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to='/news'>疫情新闻</router-link>
+              <router-link to='/news'>舆情分析</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to='/popular'>斗争新冠</router-link>
+              <router-link to='/popular'>疫情回顾</router-link>
             </a-menu-item>
             <a-menu-item>
-              <router-link to='/transmit'>传播模拟</router-link>
+              <router-link to='/transmit'>疫情警惕</router-link>
             </a-menu-item>
             <a-menu-item>
               <router-link to='/defend'>新冠防范</router-link>
