@@ -51,12 +51,13 @@ export default {
   }
 
   .leftContent {
-    width: 60%;
+    margin-left: 2%;
+    width: 70%;
   }
 
   .rightContent {
-    width: 35%;
-    margin-left: 1%;
+    width: 27%;
+    margin-left: 2%;
   }
 }
 </style>
