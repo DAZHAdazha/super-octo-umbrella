@@ -14,7 +14,7 @@ module.exports = {
         target: 'http://127.0.0.1:5000/news_search',
         changeOrigin: true,
         pathRewrite: {
-          '^/news_search': ''//后面可以使重写的新路径，一般不做更改
+          '^/news_search': ''// 后面可以使重写的新路径，一般不做更改
         }
       },
       // 对应的域名代理,通过这种方法来完成http跨域请求
@@ -26,38 +26,38 @@ module.exports = {
         }
       },
       '/news': {
-        target: 'https://api.yonyoucloud.com/apis/dst/ncov/query',// 接口的域名
+        target: 'https://api.yonyoucloud.com/apis/dst/ncov/query', // 接口的域名
         changeOrigin: true,
         pathRewrite: {
-          '^/news': ''//后面可以使重写的新路径，一般不做更改
+          '^/news': ''
         }
       },
       '/globalrank': {
         target: 'https://corona.lmao.ninja/v2/countries?yesterday&sort=cases',
         changeOrigin: true,
         pathRewrite: {
-          '^/globalrank': ''//后面可以使重写的新路径，一般不做更改
+          '^/globalrank': ''
         }
       },
       '/globaldata': {
         target: 'https://corona.lmao.ninja/v2/all?yesterday',
         changeOrigin: true,
         pathRewrite: {
-          '^/globaldata': ''//后面可以使重写的新路径，一般不做更改
+          '^/globaldata': ''
         }
       },
       '/baidu': {
         target: 'http://index.baidu.com/api/WordGraph/multi?wordlist%5B%5D=%E7%96%AB%E6%83%85',
         changeOrigin: true,
         pathRewrite: {
-          '^/baidu': ''//后面可以使重写的新路径，一般不做更改
+          '^/baidu': ''
         }
       },
       '/rumors_search': {
         target: 'http://127.0.0.1:5000/rumors_search',
         changeOrigin: true,
         pathRewrite: {
-          '^/rumors_search': ''//后面可以使重写的新路径，一般不做更改
+          '^/rumors_search': ''
         }
       }
     },

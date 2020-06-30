@@ -57,7 +57,7 @@ export default {
         .then(res => {
           // console.log(res);
           var response = res.data.data
-          console.log(response);
+          // console.log(response)
           this.comming = true
           this.domesticnumber = response.gntotal
           this.domesticaddnumber = response.add_daily.addcon_new

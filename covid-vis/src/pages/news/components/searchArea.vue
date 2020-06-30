@@ -3,7 +3,7 @@
     <a-input-search placeholder="搜索新闻" enter-button="Search" @search="onSearch" />
     <div></div>
     <a-list item-layout="horizontal" :data-source="data">
-      <a-list-item slot="renderItem" slot-scope="item,index">
+      <a-list-item slot="renderItem" slot-scope="item">
         <a-list-item-meta>
           <a slot="description" :style="{color:'#3333FF','font-size':'10px'}">{{item.description}}</a>
           <a
@@ -41,7 +41,7 @@ export default {
         })
         .then(function (response) {
           // console.log(response.data);
-          if (response.data.length != 0) {
+          if (response.data.length !== 0) {
             that.data.length = 0
             for (var i = 0; i < response.data.length; i++) {
               that.data.push({
@@ -57,8 +57,8 @@ export default {
         }
         )
         .catch(err => {
-          console.log("GetNewsWrong!");
-        });
+          console.log(err)
+        })
     },
     getNews () {
       axios
@@ -81,11 +81,11 @@ export default {
           // console.log(news[0]);
         })
         .catch(err => {
-          console.log("Newsfail")
+          console.log(err)
         })
     }
   }
-};
+}
 </script>
 
 <style lang="less">

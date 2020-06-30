@@ -1,6 +1,6 @@
 <template>
   <div id="searchBox">
-    <a-input-search placeholder="搜索谣言" enter-button="Search" @search="onSearch" />
+    <a-input-search placeholder="搜索新闻" enter-button="Search" @search="onSearch" />
     <div></div>
     <a-list item-layout="horizontal" :data-source="data">
       <a-list-item slot="renderItem" slot-scope="item">
@@ -20,11 +20,10 @@
     </a-list>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 export default {
-  name: 'searchArea',
+  name: 'searchNews',
   data () {
     return {
       data: []
@@ -37,17 +36,18 @@ export default {
     onSearch (value) {
       var that = this
       axios
-        .post('/rumors_search', {
+        .post('/news_search', {
           title: value
         })
         .then(function (response) {
-          // console.log(response.data);
+          // console.log(response.data)
           if (response.data.length !== 0) {
             that.data.length = 0
             for (var i = 0; i < response.data.length; i++) {
               that.data.push({
                 title: JSON.parse(response.data[i]).title,
-                description: JSON.parse(response.data[i]).summary
+                description: JSON.parse(response.data[i]).summary,
+                linkage: JSON.parse(response.data[i]).url
               })
             }
           } else {
@@ -90,9 +90,10 @@ export default {
 
 <style lang="less">
 #searchBox {
-  right: 10%;
+
   box-sizing: border-box;
   box-shadow: 0 0 2px blue;
   margin-top: 20px;
 }
+
 </style>

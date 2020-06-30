@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
   name: 'ScrollBoard',
-  data() {
+  data () {
     return {
       config: {
         header: ['内容', '来源'],
@@ -31,17 +31,17 @@ export default {
         headerHeight: 45,
         oddRowBGC: 'rgba(0, 44, 81, 0.8)',
         evenRowBGC: 'rgba(10, 29, 50, 0.8)',
-        waitTime:1000
+        waitTime: 1000
       },
       loading: false,
       completed: true
-    };
+    }
   },
-  mounted() {
+  mounted () {
     // this.getNews();
   },
   methods: {
-    getNews() {
+    getNews () {
       axios
         .get('/news', {
           headers: {
@@ -51,33 +51,33 @@ export default {
         })
         .then(res => {
           // console.log(res);
-          var news = res.data.newslist[0].news;
-          console.log(news);
+          var news = res.data.newslist[0].news
+          // console.log(news)
           for (var i = 0; i < news.length; i++) {
-            var arr = new Array();
-            arr[0] = news[i].pubDateStr;
+            // eslint-disable-next-line no-array-constructor
+            var arr = new Array()
+            arr[0] = news[i].pubDateStr
             arr[1] =
-              '<a href=' + news[i].sourceUrl + '>' + news[i].title + '</a>';
-            arr[2] = news[i].infoSource;
-            this.config.data.push(arr);
+              '<a href=' + news[i].sourceUrl + '>' + news[i].title + '</a>'
+            arr[2] = news[i].infoSource
+            this.config.data.push(arr)
           }
-          this.loading = false;
-          this.completed = true;
-          this.config = { ...this.config };
+          this.loading = false
+          this.completed = true
+          this.config = { ...this.config }
         })
         .catch(err => {
-          console.log('Newsfail');
-        });
+          console.log(err)
+        })
     }
   }
-};
+}
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 #scroll-board {
   width: 100%;
   box-sizing: border-box;
-  margin-right: 10px;
   height: 100%;
   overflow: hidden;
 }

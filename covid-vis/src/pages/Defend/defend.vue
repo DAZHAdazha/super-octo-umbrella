@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import topHeader from "../components/topHeader";
-import careerRank from "./components/careerRank";
-import scrollBoard from "../components/scrollBoard";
+import topHeader from '../components/topHeader'
+import careerRank from './components/careerRank'
+import scrollBoard from './components/scrollBoard'
 export default {
-  name: "defend",
+  name: 'defend',
   components: {
     topHeader,
     careerRank,
     scrollBoard
   }
-};
+}
 </script>
 
 <style lang="less">
@@ -51,13 +51,8 @@ export default {
   }
 
   .leftContent {
-    margin-left: 2%;
-    width: 70%;
+    width: 90%;
   }
 
-  .rightContent {
-    width: 27%;
-    margin-left: 2%;
-  }
 }
 </style>

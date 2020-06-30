@@ -32,19 +32,19 @@ export default {
           var response = res.data
           // console.log(response);
           for (var i = 0; i < response.length; i++) {
-            this.config.data.push({name:response[i].country,value:response[i].cases})
+            this.config.data.push({name: response[i].country, value: response[i].cases})
           }
-          console.log(this.config)
+          // console.log(this.config)
           this.loading = false
           this.completed = true
           this.config = { ...this.config }
         })
         .catch(err => {
-          console.log('fail')
+          console.log(err)
         })
     }
   }
-};
+}
 </script>
 
 <style lang="less">

@@ -1,7 +1,7 @@
 <template>
   <div id="sideBar">
     <div class="header">新闻实时搜索关键词热度</div>
-    <dv-capsule-chart :config="config" style="width:350px;height:400px" />
+    <dv-capsule-chart :config="config" style="width:600px;height:750px" />
   </div>
 </template>
 

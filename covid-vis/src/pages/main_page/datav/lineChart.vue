@@ -114,6 +114,7 @@ export default {
 
 <style scoped>
 #lineChart {
+  margin-left: 20%;
   width: 600px;
   height: 400px;
 }

@@ -107,9 +107,9 @@ def get_rumor():
     if request.method == 'POST':
       q = request.get_json()['title']
       # print(q)
-      rumor = Rumors.query.filter(or_(Rumors.title.contains(q), Rumors.body.contains(q), Rumors.summary.contains(q), Rumors.time.contains(q)))
+      rumor = Rumors.query.filter(or_(Rumors.title.contains(q), Rumors.body.contains(q), Rumors.summary.contains(q))).limit(13)
       dict = []
-      # print(rumor.all())
+      print(rumor.all())
       for i in rumor.all():
         dict.append(i.to_json())
       # print(json.dumps(dict))
@@ -146,8 +146,8 @@ def get_news():
       q = request.get_json()['title']
       # print(q)
       dict = []
-      news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q), News.time.contains(q)))
-      # print(news.all())
+      news = News.query.filter(or_(News.title.contains(q), News.source.contains(q), News.summary.contains(q))).limit(10)
+      print(news.all())
       for i in news.all():
         dict.append(i.to_json())
     return json.dumps(dict)

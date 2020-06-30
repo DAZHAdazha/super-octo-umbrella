@@ -5,7 +5,7 @@
       <div class='main-content'>
         <!-- <digital-flop /> -->
         <div class='leftContent'>
-          <searchArea></searchArea>
+          <searchNews></searchNews>
         </div>
         <div class='rightContent'>
           <sideBar></sideBar>
@@ -17,13 +17,13 @@
 
 <script>
 import topHeader from '../components/topHeader'
-import searchArea from './components/searchArea'
+import searchNews from './components/searchNews'
 import sideBar from './components/sideBar'
 export default {
   name: 'news',
   components: {
     topHeader,
-    searchArea,
+    searchNews,
     sideBar
   }
 }

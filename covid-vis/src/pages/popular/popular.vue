@@ -1,27 +1,27 @@
 <template>
-  <div id="main">
-    <div class="popular-main">
-      <line-chart :history="history"></line-chart>
-      <world-line :worldHistory="worldHistory"></world-line>
+  <div id='main'>
+    <div class='popular-main'>
+      <line-chart :history='history'></line-chart>
+      <world-line :worldHistory='worldHistory'></world-line>
     </div>
-    <div class="right">
+    <div class='right'>
       <timeline></timeline>
     </div>
   </div>
 </template>
 
 <script>
-import lineChart from "../main_page/datav/lineChart";
-import worldLine from "../main_page/datav/worldLine";
-import timeline from "./components/timeline";
-import axios from "axios";
+import lineChart from '../main_page/datav/lineChart'
+import worldLine from '../main_page/datav/worldLine'
+import timeline from './components/timeline'
+import axios from 'axios'
 export default {
-  name: "popular",
-  data() {
+  name: 'popular',
+  data () {
     return {
       history: [],
       worldHistory: []
-    };
+    }
   },
   components: {
     lineChart,
@@ -29,17 +29,17 @@ export default {
     timeline
   },
   methods: {
-    getData() {
-      axios.get("/api").then(response => {
-        this.history = response.data.data.historylist;
-        this.worldHistory = response.data.data.otherhistorylist;
-      });
+    getData () {
+      axios.get('/api').then(response => {
+        this.history = response.data.data.historylist
+        this.worldHistory = response.data.data.otherhistorylist
+      })
     }
   },
-  mounted() {
-    this.getData();
+  mounted () {
+    this.getData()
   }
-};
+}
 </script>
 
 <style scoped>

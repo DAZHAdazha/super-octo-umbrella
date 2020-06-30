@@ -107,6 +107,7 @@ export default {
 
 <style scoped>
 #worldLineChart {
+  margin-left: 20%;
   width: 600px;
   height: 400px;
 }
