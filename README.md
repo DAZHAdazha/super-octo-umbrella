@@ -70,7 +70,7 @@ wide web according to certain rules. This project mainly uses the request Librar
 language and beautiful soup library to crawl a small amount of data within the scope of robot’s
 protocol.
 ## 2.3 system architecture
-![](System Structure.jpg)
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/System%20Structure.jpg)
 ## 2.4 Operating environment requirements
 Front end infrastructure: Vue
 
@@ -93,6 +93,9 @@ data; public opinion analysis: provides real-time news push and search hot spots
 epidemic situation review; mainly shows the development process of epidemic situation; epidemic 
 situation simulation and rumor warning; new crown prevention: provides reminder and correlation 
 of new crown knowledge Reminders from employees.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function%20structure.jpg)
+
 ## 3.2 Display and description of specific pages
 ## 1. Real time data:
 1. Statistics of the number of infected people: the rolling display of the ranking of the total number 
@@ -105,6 +108,9 @@ highlight the data of a certain region by mouse click or hover.
 persons in the world can highlight the data of a certain area by mouse click or hover.
 4. Epidemic news display: rolling display and content source analysis of epidemic related news. 
 News information can be obtained by clicking links or viewing brief contents.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function1.jpg)
+
 ### Data sources:
 1.Global and domestic new data: HTTPs://interface.sina.cn/news/wap/fymap2020_data.d.json
 2.Epidemic related news data: HTTPs://api.yonyoucloud.com/apis/dst/ncov/query
@@ -121,6 +127,9 @@ news can be viewed and retrieved by query.
 3. Epidemic news display: a link between the rolling display of epidemic related news and the web 
 source. When the user does not perform the news search operation, the current real-time news will 
 be provided by default.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function2.jpg)
+
 ### Data sources:
 1.Global and domestic new data: HTTPs://interface.sina.cn/news/wap/fymap2020_data.d.json
 2.Epidemic related news data: HTTPs://api.yonyoucloud.com/apis/dst/ncov/query
@@ -132,6 +141,9 @@ situation history line chart which can be traced back to the source. The epidemi
 in different time periods by dragging and pulling the mouse.
 2. The major event is novel coronavirus pneumonia. The initial development process of the 
 epidemic can be known through the marked time and time content.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function3.jpg)
+
 ### Data sources:
 1.Historical data: HTTPs://interface.sina.cn/news/wap/fymap2020_data.d.json
 2.Time line information: it can be known through network retrieval
@@ -146,6 +158,9 @@ function. The rumor can be viewed and searched by inquiry.
 3. Epidemic news display: the rolling display of epidemic related news and the link to the website 
 source. When the user does not perform rumor search operation, the current real-time news will be 
 provided by default.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function4.jpg)
+
 ### Data sources:
 1.Rumor data: Mining self-built rumor MySQL database through network
 ## 5. New crown prevention:
@@ -154,6 +169,9 @@ epidemic. The historical epidemic data of different countries can be displayed c
 2.Risk index of epidemic situation work: display the risk index of dangerous industries under the 
 epidemic situation in the form of rolling, and remind relevant employees to pay attention to 
 prevention.
+
+![image](https://github.com/DAZHAdazha/COVID-19-Visualization/blob/master/Function5.jpg)
+
 ### Data sources:
 1.News query data: Mining self-built news MySQL database through network
 2.Risk index ranking: network data
