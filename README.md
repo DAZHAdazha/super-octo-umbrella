@@ -70,14 +70,16 @@ wide web according to certain rules. This project mainly uses the request Librar
 language and beautiful soup library to crawl a small amount of data within the scope of robot’s
 protocol.
 ## 2.3 system architecture
-基于 Flask 的
-后端数据处理
-运用 MySQL 进行
-存储，查询
+![](System Structure.jpg)
 ## 2.4 Operating environment requirements
 Front end infrastructure: Vue
+
 Back end infrastructure: Flag
-IE8 or above or chrome, Firefox, Safari database: MySQL
+
+IE8 or above or chrome, Firefox, Safari 
+
+Database: MySQL
+
 ## 2.5 Design method
 The system adopts the traditional method of system development life cycle, adopts the top-down 
 and gradually refined structured system design method. It has gone through the stages of problem 
